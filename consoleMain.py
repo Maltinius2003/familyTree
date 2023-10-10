@@ -7,14 +7,6 @@ import helpMethods as hm
 
 persons = []
 
-class Language(Enum):
-    GERMAN = "de"
-    ENGLISH = "en"
-
-d = dict()
-current_language = Language.GERMAN
-current_language = Language.ENGLISH
-
 def main():
     createPerson()
     for n in persons[0].getFirstNames():
