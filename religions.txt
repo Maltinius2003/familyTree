@@ -1,0 +1,77 @@
+0 Unbekannt
+1 Andere
+2 Konfessionslos
+3 Christentum
+4 Islam
+5 Judentum
+6 Hinduismus
+7 Budismus
+8 Sikhismus
+9 Bahai Religion
+10 Shintoismus
+11 Taoismus
+12 Zoroastrismus
+13 Jainismus
+14 Konfuzianismus
+
+3 0 Unbekannt
+3 1 Andere
+3 2 Katholisch
+3 3 Evangelisch/Protestantisch
+3 4 Orthodox
+3 5 Freikirche
+4 2 Sunnitentum
+4 3 Schiitentum
+4 4 Ibaditentum
+
+3 2 0 Unbekannt
+3 2 1 Andere
+3 2 2 Römisch-Katholisch
+3 2 3 Alt-Katholisch
+3 2 4 Armenisch-Katholisch
+3 2 5 Chaldäisch-Katholisch
+3 2 6 Eritreisch-Katholisch
+3 2 7 Äthiopisch-Katholisch
+3 2 8 Syrisch-Katholisch
+3 2 9 Koptisch-Katholisch
+3 2 10 Maronitisch-Katholisch
+3 2 11 Melkitisch-Katholisch
+3 2 12 Ukrainisch-Griechisch-Katholisch
+3 2 13 Ruthenisch-Griechisch-Katholisch
+3 2 14 Syro-Malabarisch-Katholisch
+3 2 15 Syro-Malankarisch-Katholisch
+
+3 3 0 Unbekannt
+3 3 1 Andere
+3 3 2 Nur Evangelisch
+3 3 3 Andere evangelische/protestantische Freikirche
+3 3 4 Evangelisch-Lutherisch
+3 3 5 Evangelisch-Reformiert
+3 3 6 Unitarisch-Protestantisch
+3 3 7 Anglikanische Gemeinschaft
+3 3 8 Baptismus
+3 3 9 Mennonitische Freikirche
+3 3 10 Quäkertum
+3 3 11 Adventistische Kirche(n)
+3 3 12 Pfingstbewegung
+3 3 13 Heilsarmee
+3 3 14 Siebenten-Tags-Adventisten
+3 3 15 Apostolische Gemeinschaften
+3 3 16 Methodismus
+3 3 17 Freie evangelische Gemeinde
+
+3 4 0 Unbekannt
+3 4 1 Andere
+3 4 2 Russisch-Orthodox
+3 4 3 Ukrainisch-Orthodox
+3 4 4 Georgisch-Orthodox
+3 4 5 Serbisch-Orthodox
+3 4 6 Bulgarisch-Orthodox
+3 4 7 Rumaenisch-Orthodox
+3 4 8 Griechisch-Orthodox
+3 4 9 Zypern-Orthodox
+3 4 10 Aethiopisch-Orthodox
+3 4 11 Koptisch-Orthodox
+3 4 12 Syrisch-Orthodox
+
+    

@@ -1,4 +1,3 @@
-#import numpy as np
 import helpMethods as hm
 import datatypes as dt
 

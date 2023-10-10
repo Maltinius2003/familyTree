@@ -1,9 +1,7 @@
-from enum import Enum
-
-import dict
 import person as p
 import datatypes as dt
 import helpMethods as hm
+import consoleQuestions as cQ
 
 persons = []
 
@@ -15,20 +13,13 @@ def main():
 def createPerson():
     p1 = p.Person()
 
-    in1 = input('Amtlicher Vorname: ')
-    p1.addName(0, in1, 1)
-    choice = 'n'
-    while choice.lower() != 'j' and choice.lower() != "":
-        print('Name korrekt?: ' + p1.getLastAddedFirstName() + ' ' + '(J/n)')
-        choice = input()
-        if choice.lower() == "n":
-            p1.delLastAddedName(0)
-            in1 = input('Name erneut eingeben: ')
-            p1.addName(0, in1, 1)
-        else:
-            break
+    firstName = input('Official First Name: ')
+    firstName = cQ.askIfcorrect(firstName)
+    p1.addName(0, firstName, 1)
 
-    
+    familyName = input('Family Name')
+    familyName = cQ.askIfcorrect(familyName)
+    p1.addName(2, familyName)    
 
     persons.append(p1)
 

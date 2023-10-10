@@ -12,12 +12,14 @@ class Religion:
 class Relation:
     def __init__(self):
         self.partner = None
-        self.marriage = False
-        self.marriageType = 0
-        self.churchMarriageType = None
+        self.marriage = False #True ehe, False keine ehe
+        self.marriageType = 0 #0 unbekannt, 1 standesamtlich, 2 religiös
+        self.churchMarriageType = None #Religion der Partner abfragen oder andere 
+        self.country = "" #enum
+        self.otherCountry = ""
         self.startDate = ""
         self.endDate = ""
-        self.legallyBinding = 0
+        self.legallyBinding = 0 #rechtlich bindend? 0 unbekannt, 1 Ja (Stand im Wohnland), 2 Nur im Schließungsland, 3 Nein  
         self.breaks = []
 
     class RelationBreak:
