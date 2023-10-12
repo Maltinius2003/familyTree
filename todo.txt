@@ -1,1 +1,2 @@
 Länderliste als txt für Heirat, als enum laden, bei Liste verschiebt sich mögl. index
+kofessionen juden
