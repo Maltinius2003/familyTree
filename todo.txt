@@ -1,6 +1,5 @@
 Länderliste als txt für Heirat, als enum laden, bei Liste verschiebt sich mögl. index
 kofessionen juden
 
-Syrisch-Maronitische Kirche von Antiochien
 Als Namensänderungsgrund Änderung der Namesrechts von (2023)
 Namen mit Leerzeichen und Bindestrichen

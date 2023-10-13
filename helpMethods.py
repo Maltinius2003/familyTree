@@ -12,6 +12,16 @@ def name_to_str(self):
         namePartListStr.append(np.part)
     return strList_to_str(namePartListStr)
 
+def getLongestListinList(listoflists):
+    max = 0
+    pos = None
+    for i, l in enumerate(listoflists):
+        if len(l) > max:
+            max = len(l)
+            pos = i
+    return listoflists[pos]
+    
+
 def askFirstNameOrigin(self):
     print("Welchen Ursprung hat der Name " + name_to_str(self) + "?")
     if len(self.nameComplete) > 1:
