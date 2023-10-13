@@ -1,0 +1,95 @@
+0,Keine
+1,Unbekannt
+2,Christentum
+3,Islam
+4,Judentum
+5,Hinduismus
+6,Budismus
+7,Sikhismus
+8,Bahai Religion
+9,Shintoismus
+10,Taoismus
+11,Zoroastrismus
+12,Jainismus
+13,Konfuzianismus
+14,Andere
+
+2,0,Unbekannt
+2,1,Keine weitere Unterscheidung
+2,2,Katholisch
+2,3,Evangelisch/Protestantisch
+2,4,Anglikanische Gemeinschaft
+2,5,Orthodox
+2,6,Freikirche
+2,7,Andere
+
+3,0,Unbekannt
+3,1,Keine weitere Unterscheidung
+3,2,Sunnitentum
+3,3,Schiitentum
+3,4,Ibaditentum
+3,5,Andere
+
+2,2,0,Unbekannt
+2,2,1,Keine weitere Unterscheidung
+2,2,2,Römisch-Katholische Kirche
+2,2,3,Katholische Ostkirchen
+2,2,4,Altkatholisch
+2,2,5,Andere
+
+2,2,3,0,Unbekannt
+2,2,3,1,Keine weitere Unterscheidung
+2,2,3,2,Armenische-Katholische Kirche
+2,2,3,3,Äthiopische-Katholische Kirche
+2,2,3,4,Albanische Griechisch-Katholische Kirche
+2,2,3,5,Bulgarische Griechisch-Katholische Kirche
+2,2,3,6,Byzantinische Kirche in Kroatien und Serbien
+2,2,3,7,Chaldäische-Katholische Kirche
+2,2,3,8,Eritreische-Katholische Kirche
+2,2,3,9,Griechische Griechisch-Katholische Kirche
+2,2,3,10,Italo-Albanische Kirche
+2,2,3,11,Koptisch-Katholische Kirche
+2,2,3,12,Syrisch-Maronitische Kirche von Antiochien
+2,2,3,13,Melkitische Griechisch-katholische Kirche
+2,2,3,14,Rumänische Griechisch-Katholische Kirche
+2,2,3,15,Ruthenische Griechisch-Katholische Kirche
+2,2,3,16,Russische Griechisch-Katholische Kirche
+2,2,3,17,Syrisch-Katholische Kirche
+2,2,3,18,Syro-Malabarische Katholische Kirche
+2,2,3,19,Syro-Malankarische Katholische Kirche
+2,2,3,20,Griechisch-Katholische Kirche in der Slowakei
+2,2,3,21,Ukrainische Griechisch-Katholische Kirche
+2,2,3,22,Ungarische Griechisch-Katholische Kirche
+2,2,3,23,Andere
+
+2,3,0,Unbekannt
+2,3,1,Keine weitere Unterscheidung
+2,3,2,Evangelisch-Lutherisch
+2,3,3,Evangelisch-Reformiert
+2,3,4,Baptismus
+2,3,5,Mennoniten
+2,3,6,Quäkertum
+2,3,7,Adventistische Kirche(n)
+2,3,8,Pfingstbewegung
+2,3,9,Heilsarmee
+2,3,10,Apostolische Gemeinschaften
+2,3,11,Methodistische und Wesleyanische Kirchen
+2,3,12,Vineyard-Bewegung
+2,3,13,Freie Gemeinde
+2,3,14,Andere
+
+2,5,0,Unbekannt
+2,5,1,Keine weitere Unterscheidung
+2,5,2,Russisch-Orthodoxe Kirche
+2,5,3,Ukrainisch-Orthodoxe Kirche
+2,5,4,Georgisch-Orthodoxe Kirche
+2,5,5,Serbisch-Orthodoxe Kirche
+2,5,6,Bulgarisch-Orthodoxe Kirche
+2,5,7,Rumaenisch-Orthodoxe Kirche
+2,5,8,Griechisch-Orthodoxe Kirche
+2,5,9,Zypern-Orthodoxe Kirche
+2,5,10,Aethiopisch-Orthodoxe Kirche
+2,5,11,Koptisch-Orthodoxe Kirche
+2,5,12,Syrisch-Orthodoxe Kirche
+2,5,13,Andere
+    
