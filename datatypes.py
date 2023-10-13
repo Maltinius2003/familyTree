@@ -1,11 +1,6 @@
 class Religion:
     def __init__(self):
-        self.main = 0
-        self.otherMain = ""
-        self.mainConfession = 0
-        self.otherMainConfession = ""
-        self.underConfession = 0
-        self.otherUnderConfession = ""
+        self.hierachy = [] #z.B. Christentum, Katholisch, Römisch-Katholisch
         self.joinDate = ""
         self.leaveDate = ""
 
