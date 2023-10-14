@@ -1,6 +1,6 @@
 class Religion:
     def __init__(self):
-        self.hierachy = [] #z.B. Christentum, Katholisch, Römisch-Katholisch
+        self.hierachy = [] #z.B. (Christentum, Katholisch, Römisch-Katholisch)
         self.joinDate = ""
         self.leaveDate = ""
 
@@ -9,7 +9,7 @@ class Relation:
         self.partner = None
         self.marriage = False #True ehe, False keine ehe
         self.marriageType = 0 #0 unbekannt, 1 standesamtlich, 2 religiös
-        self.churchMarriageType = None #Religion der Partner abfragen oder andere 
+        self.religiosMarriageType = None #Religion der Partner abfragen oder andere 
         self.country = "" #enum
         self.otherCountry = ""
         self.startDate = ""

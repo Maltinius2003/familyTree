@@ -14,6 +14,4 @@ for list in religions:
         if len(list) == i:
             orderdReligions[i-2].append(list)
 
-
-
 print(orderdReligions)

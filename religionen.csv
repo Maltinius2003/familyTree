@@ -1,96 +1,93 @@
-0,Keine
-1,Unbekannt
-2,Christentum
-2,0,Unbekannt
-2,1,Keine weitere Unterscheidung
-2,2,Katholisch
-2,2,0,Unbekannt
-2,2,1,Keine weitere Unterscheidung
-2,2,2,RÃ¶misch-Katholische Kirche
-2,2,3,Katholische Ostkirchen
-2,2,3,0,Unbekannt
-2,2,3,1,Keine weitere Unterscheidung
-2,2,3,2,Armenische-Katholische Kirche
-2,2,3,3,Ã„thiopische-Katholische Kirche
-2,2,3,4,Albanische Griechisch-Katholische Kirche
-2,2,3,5,Bulgarische Griechisch-Katholische Kirche
-2,2,3,6,Byzantinische Kirche in Kroatien und Serbien
-2,2,3,7,ChaldÃ¤ische-Katholische Kirche
-2,2,3,8,Eritreische-Katholische Kirche
-2,2,3,9,Griechische Griechisch-Katholische Kirche
-2,2,3,10,Italo-Albanische Kirche
-2,2,3,11,Koptisch-Katholische Kirche
-2,2,3,12,Syrisch-Maronitische Kirche von Antiochien
-2,2,3,13,Melkitische Griechisch-katholische Kirche
-2,2,3,14,RumÃ¤nische Griechisch-Katholische Kirche
-2,2,3,15,Ruthenische Griechisch-Katholische Kirche
-2,2,3,16,Russische Griechisch-Katholische Kirche
-2,2,3,17,Syrisch-Katholische Kirche
-2,2,3,18,Syro-Malabarische Katholische Kirche
-2,2,3,19,Syro-Malankarische Katholische Kirche
-2,2,3,20,Griechisch-Katholische Kirche in der Slowakei
-2,2,3,21,Ukrainische Griechisch-Katholische Kirche
-2,2,3,22,Ungarische Griechisch-Katholische Kirche
-2,2,3,23,Andere
-2,2,4,Altkatholisch
-2,2,5,Andere
-2,3,Evangelisch/Protestantisch
-2,3,0,Unbekannt
-2,3,1,Keine weitere Unterscheidung
-2,3,2,Evangelisch-Lutherisch
-2,3,3,Evangelisch-Reformiert
-2,3,4,Baptismus
-2,3,5,TÃ¤ufer
-2,3,5,0,Mennoniten
-2,3,5,1,Amische
-2,3,5,2,Hutterer
-2,3,5,3,Mennonitische BrÃ¼dergemeinden
-2,3,5,4,
-2,3,5,5,
-2,3,5,6,
-2,3,5,7,
-2,3,6,QuÃ¤kertum
-2,3,7,Adventistische Kirche(n)
-2,3,8,Pfingstbewegung
-2,3,9,Heilsarmee
-2,3,10,Apostolische Gemeinschaften
-2,3,11,Methodistische und Wesleyanische Kirchen
-2,3,12,Vineyard-Bewegung
-2,3,13,Freie Gemeinde
-2,3,14,Andere
-2,4,Anglikanische Gemeinschaft
-2,5,Orthodox
-2,5,0,Unbekannt
-2,5,1,Keine weitere Unterscheidung
-2,5,2,Russisch-Orthodoxe Kirche
-2,5,3,Ukrainisch-Orthodoxe Kirche
-2,5,4,Georgisch-Orthodoxe Kirche
-2,5,5,Serbisch-Orthodoxe Kirche
-2,5,6,Bulgarisch-Orthodoxe Kirche
-2,5,7,Rumaenisch-Orthodoxe Kirche
-2,5,8,Griechisch-Orthodoxe Kirche
-2,5,9,Zypern-Orthodoxe Kirche
-2,5,10,Aethiopisch-Orthodoxe Kirche
-2,5,11,Koptisch-Orthodoxe Kirche
-2,5,12,Syrisch-Orthodoxe Kirche
-2,5,13,Andere
-2,6,Freikirche
-2,7,Andere
-3,Islam
-3,0,Unbekannt
-3,1,Keine weitere Unterscheidung
-3,2,Sunnitentum
-3,3,Schiitentum
-3,4,Ibaditentum
-3,5,Andere
-4,Judentum
-5,Hinduismus
-6,Budismus
-7,Sikhismus
-8,Bahai Religion
-9,Shintoismus
-10,Taoismus
-11,Zoroastrismus
-12,Jainismus
-13,Konfuzianismus
-14,Andere
+0,Keine 
+1,Unbekannt 
+2,Andere 
+3,Christentum 
+3,0,Unbekannt 
+3,1,Keine weitere Unterscheidung 
+3,2,Andere 
+3,3,Katholisch 
+3,3,0,Unbekannt
+3,3,1,Keine weitere Unterscheidung
+3,3,2,Andere
+3,3,3,Römisch-Katholische Kirche
+3,3,4,Katholische Ostkirchen
+3,3,4,0,Unbekannt
+3,3,4,1,Keine weitere Unterscheidung
+3,3,4,2,Andere
+3,3,4,3,Armenische-Katholische Kirche
+3,3,4,4,Äthiopische-Katholische Kirche
+3,3,4,5,Albanische Griechisch-Katholische Kirche
+3,3,4,6,Bulgarische Griechisch-Katholische Kirche
+3,3,4,7,Byzantinische Kirche in Kroatien und Serbien
+3,3,4,8,Chaldäische-Katholische Kirche
+3,3,4,9,Eritreische-Katholische Kirche
+3,3,4,10,Griechische Griechisch-Katholische Kirche
+3,3,4,11,Italo-Albanische Kirche
+3,3,4,12,Koptisch-Katholische Kirche
+3,3,4,13,Syrisch-Maronitische Kirche von Antiochien
+3,3,4,14,Melkitische Griechisch-katholische Kirche
+3,3,4,15,Rumänische Griechisch-Katholische Kirche
+3,3,4,16,Ruthenische Griechisch-Katholische Kirche
+3,3,4,17,Russische Griechisch-Katholische Kirche
+3,3,4,18,Syrisch-Katholische Kirche
+3,3,4,19,Syro-Malabarische Katholische Kirche
+3,3,4,20,Syro-Malankarische Katholische Kirche
+3,3,4,21,Griechisch-Katholische Kirche in der Slowakei
+3,3,4,22,Ukrainische Griechisch-Katholische Kirche
+3,3,4,23,Ungarische Griechisch-Katholische Kirche
+3,3,5,Altkatholisch
+3,4,Evangelisch/Protestantisch 
+3,4,0,Unbekannt
+3,4,1,Keine weitere Unterscheidung
+3,4,2,Andere
+3,4,3,Evangelisch-Lutherisch
+3,4,4,Evangelisch-Reformiert
+3,4,5,Baptismus
+3,4,6,Täufer
+3,4,6,0,Mennoniten
+3,4,6,1,Amische
+3,4,6,2,Hutterer
+3,4,6,3,Mennonitische Brüdergemeinden
+3,4,6,4,Schweizer Brüder
+3,4,7,Quäkertum,
+3,4,8,Adventistische Kirche(n)
+3,4,9,Pfingstbewegung
+3,4,10,Heilsarmee
+3,4,11,Apostolische Gemeinschaften
+3,4,12,Methodistische und Wesleyanische Kirchen
+3,4,13,Vineyard-Bewegung
+3,4,14,Freie Gemeinde
+3,5,Anglikanische Gemeinschaft 
+3,6,Orthodox 
+3,6,0,Unbekannt
+3,6,1,Keine weitere Unterscheidung
+3,6,2,Andere
+3,6,3,Russisch-Orthodoxe Kirche
+3,6,4,Ukrainisch-Orthodoxe Kirche
+3,6,5,Georgisch-Orthodoxe Kirche
+3,6,6,Serbisch-Orthodoxe Kirche
+3,6,7,Bulgarisch-Orthodoxe Kirche
+3,6,8,Rumänisch-Orthodoxe Kirche
+3,6,9,Kirche von Griechenland 
+3,6,10,Kirche von Zypern
+3,6,11,Äthiopisch-Orthodoxe Tewahedo-Kirche
+3,6,12,Koptisch-Orthodoxe Kirche von Alexandrien
+3,6,13,Syrisch-Orthodoxe Kirche von Antiochien
+3,6,Freikirche 
+4,Islam 
+4,0,Unbekannt 
+4,1,Keine weitere Unterscheidung 
+4,2,Andere 
+4,3,Sunnitentum 
+4,4,Schiitentum 
+4,5,Ibaditentum 
+5,Judentum 
+6,Hinduismus 
+7,Budismus 
+8,Sikhismus 
+9,Bahai Religion 
+10,Shintoismus 
+11,Taoismus 
+12,Zoroastrismus 
+13,Jainismus 
+14,Konfuzianismus 
