@@ -9,24 +9,24 @@
 3,3,0,Unbekannt
 3,3,1,Keine weitere Unterscheidung
 3,3,2,Andere
-3,3,3,Römisch-Katholische Kirche
+3,3,3,Rï¿½misch-Katholische Kirche
 3,3,4,Katholische Ostkirchen
 3,3,4,0,Unbekannt
 3,3,4,1,Keine weitere Unterscheidung
 3,3,4,2,Andere
 3,3,4,3,Armenische-Katholische Kirche
-3,3,4,4,Äthiopische-Katholische Kirche
+3,3,4,4,ï¿½thiopische-Katholische Kirche
 3,3,4,5,Albanische Griechisch-Katholische Kirche
 3,3,4,6,Bulgarische Griechisch-Katholische Kirche
 3,3,4,7,Byzantinische Kirche in Kroatien und Serbien
-3,3,4,8,Chaldäische-Katholische Kirche
+3,3,4,8,Chaldï¿½ische-Katholische Kirche
 3,3,4,9,Eritreische-Katholische Kirche
 3,3,4,10,Griechische Griechisch-Katholische Kirche
 3,3,4,11,Italo-Albanische Kirche
 3,3,4,12,Koptisch-Katholische Kirche
 3,3,4,13,Syrisch-Maronitische Kirche von Antiochien
 3,3,4,14,Melkitische Griechisch-katholische Kirche
-3,3,4,15,Rumänische Griechisch-Katholische Kirche
+3,3,4,15,Rumï¿½nische Griechisch-Katholische Kirche
 3,3,4,16,Ruthenische Griechisch-Katholische Kirche
 3,3,4,17,Russische Griechisch-Katholische Kirche
 3,3,4,18,Syrisch-Katholische Kirche
@@ -43,13 +43,13 @@
 3,4,3,Evangelisch-Lutherisch
 3,4,4,Evangelisch-Reformiert
 3,4,5,Baptismus
-3,4,6,Täufer
+3,4,6,Tï¿½ufer
 3,4,6,0,Mennoniten
 3,4,6,1,Amische
 3,4,6,2,Hutterer
-3,4,6,3,Mennonitische Brüdergemeinden
-3,4,6,4,Schweizer Brüder
-3,4,7,Quäkertum,
+3,4,6,3,Mennonitische Brï¿½dergemeinden
+3,4,6,4,Schweizer Brï¿½der
+3,4,7,Quï¿½kertum,
 3,4,8,Adventistische Kirche(n)
 3,4,9,Pfingstbewegung
 3,4,10,Heilsarmee
@@ -67,13 +67,14 @@
 3,6,5,Georgisch-Orthodoxe Kirche
 3,6,6,Serbisch-Orthodoxe Kirche
 3,6,7,Bulgarisch-Orthodoxe Kirche
-3,6,8,Rumänisch-Orthodoxe Kirche
+3,6,8,Rumï¿½nisch-Orthodoxe Kirche
 3,6,9,Kirche von Griechenland 
 3,6,10,Kirche von Zypern
-3,6,11,Äthiopisch-Orthodoxe Tewahedo-Kirche
+3,6,11,ï¿½thiopisch-Orthodoxe Tewahedo-Kirche
 3,6,12,Koptisch-Orthodoxe Kirche von Alexandrien
 3,6,13,Syrisch-Orthodoxe Kirche von Antiochien
-3,6,Freikirche 
+3,7,Freikirche
+3,8,Sekte
 4,Islam 
 4,0,Unbekannt 
 4,1,Keine weitere Unterscheidung 
