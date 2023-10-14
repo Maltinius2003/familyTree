@@ -1,6 +1,7 @@
+#0 == Unbekannt
 class Religion:
     def __init__(self):
-        self.hierachy = [] #z.B. (Christentum, Katholisch, Römisch-Katholisch)
+        self.hierachy = [0] #z.B. (Christentum, Katholisch, Römisch-Katholisch)
         self.joinDate = ""
         self.leaveDate = ""
 

@@ -75,6 +75,17 @@
 3,6,13,Syriac Orthodox Patriarchate of Antioch and All the East
 3,7,Free Church
 3,8,Secte
+3,8,0,Unknown
+3,8,1,No further distinction
+3,8,2,Other
+3,8,3,Jehovah's Witnesses
+3,9,Apostolic Communities
+3,9,0,Unknown
+3,9,1,No further distinction
+3,9,2,Other
+3,9,3,Catholic Apostolic Communities
+3,9,4,Apostolic Communities of the Renewed Apostolate
+3,9,5,New Apostolic Communities
 4,Islam 
 4,0,Unknown
 4,1,No further distinction

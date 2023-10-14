@@ -9,24 +9,24 @@
 3,3,0,Unbekannt
 3,3,1,Keine weitere Unterscheidung
 3,3,2,Andere
-3,3,3,R�misch-Katholische Kirche
+3,3,3,Römisch-Katholische Kirche
 3,3,4,Katholische Ostkirchen
 3,3,4,0,Unbekannt
 3,3,4,1,Keine weitere Unterscheidung
 3,3,4,2,Andere
 3,3,4,3,Armenische-Katholische Kirche
-3,3,4,4,�thiopische-Katholische Kirche
+3,3,4,4,Äthiopische-Katholische Kirche
 3,3,4,5,Albanische Griechisch-Katholische Kirche
 3,3,4,6,Bulgarische Griechisch-Katholische Kirche
 3,3,4,7,Byzantinische Kirche in Kroatien und Serbien
-3,3,4,8,Chald�ische-Katholische Kirche
+3,3,4,8,Chaldäische-Katholische Kirche
 3,3,4,9,Eritreische-Katholische Kirche
 3,3,4,10,Griechische Griechisch-Katholische Kirche
 3,3,4,11,Italo-Albanische Kirche
 3,3,4,12,Koptisch-Katholische Kirche
 3,3,4,13,Syrisch-Maronitische Kirche von Antiochien
 3,3,4,14,Melkitische Griechisch-katholische Kirche
-3,3,4,15,Rum�nische Griechisch-Katholische Kirche
+3,3,4,15,Rumänische Griechisch-Katholische Kirche
 3,3,4,16,Ruthenische Griechisch-Katholische Kirche
 3,3,4,17,Russische Griechisch-Katholische Kirche
 3,3,4,18,Syrisch-Katholische Kirche
@@ -43,20 +43,19 @@
 3,4,3,Evangelisch-Lutherisch
 3,4,4,Evangelisch-Reformiert
 3,4,5,Baptismus
-3,4,6,T�ufer
+3,4,6,Täufer
 3,4,6,0,Mennoniten
 3,4,6,1,Amische
 3,4,6,2,Hutterer
-3,4,6,3,Mennonitische Br�dergemeinden
-3,4,6,4,Schweizer Br�der
-3,4,7,Qu�kertum,
+3,4,6,3,Mennonitische Brüdergemeinden
+3,4,6,4,Schweizer Brüder
+3,4,7,Quäkertum,
 3,4,8,Adventistische Kirche(n)
 3,4,9,Pfingstbewegung
 3,4,10,Heilsarmee
-3,4,11,Apostolische Gemeinschaften
-3,4,12,Methodistische und Wesleyanische Kirchen
-3,4,13,Vineyard-Bewegung
-3,4,14,Freie Gemeinde
+3,4,11,Methodistische und Wesleyanische Kirchen
+3,4,12,Vineyard-Bewegung
+3,4,13,Freie Gemeinde
 3,5,Anglikanische Gemeinschaft 
 3,6,Orthodox 
 3,6,0,Unbekannt
@@ -67,14 +66,25 @@
 3,6,5,Georgisch-Orthodoxe Kirche
 3,6,6,Serbisch-Orthodoxe Kirche
 3,6,7,Bulgarisch-Orthodoxe Kirche
-3,6,8,Rum�nisch-Orthodoxe Kirche
+3,6,8,Rumänisch-Orthodoxe Kirche
 3,6,9,Kirche von Griechenland 
 3,6,10,Kirche von Zypern
-3,6,11,�thiopisch-Orthodoxe Tewahedo-Kirche
+3,6,11,Äthiopisch-Orthodoxe Tewahedo-Kirche
 3,6,12,Koptisch-Orthodoxe Kirche von Alexandrien
 3,6,13,Syrisch-Orthodoxe Kirche von Antiochien
 3,7,Freikirche
 3,8,Sekte
+3,8,0,Unbekannt
+3,8,1,Keine weitere Unterscheidung
+3,8,2,Andere
+3,8,3,Jehovas Zeugen
+3,9,Apostolische Gemeinschaften
+3,9,0,Unbekannt
+3,9,1,Keine weitere Unterscheidung
+3,9,2,Andere
+3,9,3,Katholisch-Apostolische Gemeinschaften
+3,9,4,Apostolische Gemeinschaften des erneuerten Apostolats
+3,9,5,Neuapostolische Gemeinschaften
 4,Islam 
 4,0,Unbekannt 
 4,1,Keine weitere Unterscheidung 
