@@ -1,6 +1,21 @@
 def name_to_name_parts(nameStr):
-    name_parts = nameStr.split("-")
-    return name_parts
+    parts = []
+    sepSymbols = []
+
+    currentPart = ""
+    for char in nameStr:
+        if char == ' ' or char == '-':
+            if currentPart:
+                parts.append(currentPart)
+                currentPart = ""
+            sepSymbols.append(char)
+        else:
+            currentPart += char
+
+    if currentPart:
+        parts.append(currentPart)
+
+    return parts, sepSymbols
 
 def strList_to_str(strList, gap='-'):
     complete = gap.join(strList)
@@ -8,8 +23,9 @@ def strList_to_str(strList, gap='-'):
 
 def name_to_str(self):
     namePartListStr = []
-    for np in self.nameComplete:
-        namePartListStr.append(np.part)
+    for i in range(len(self.nameComplete)):
+        namePartListStr.append(self.nameComplete[i].part)
+        if i<len(self.nameComplete)-1: namePartListStr.append(self.nameSepSymbols[i])
     return strList_to_str(namePartListStr)
 
 def getLongestListinList(listoflists):
@@ -21,7 +37,7 @@ def getLongestListinList(listoflists):
             pos = i
     return listoflists[pos]
     
-
+### Noch nicht überarbeitet
 def askFirstNameOrigin(self):
     print("Welchen Ursprung hat der Name " + name_to_str(self) + "?")
     if len(self.nameComplete) > 1:
@@ -47,7 +63,7 @@ def askFirstNameOrigin(self):
 
 def askLastNameType(name):
     neu = name
-    print("Von welchem Typ ist der Name: " + hm.namePartsToString(neu) + "?")
+    print("Von welchem Typ ist der Name: " + name_to_str(neu) + "?")
     if neu.nameComplete.size() > 1:
         print("0 Ergibt nur in Einzelteilen Sinn")
     print("1 Unbekannt")

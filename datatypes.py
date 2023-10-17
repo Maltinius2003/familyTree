@@ -33,6 +33,7 @@ class Gender:
 class Name:
     def __init__(self):
         self.nameComplete = []
+        self.nameSepSymbols = []
         self.type = 0
         self.origin = 1
         self.namedAfter = []
