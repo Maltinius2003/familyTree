@@ -14,8 +14,10 @@ def createPerson():
     p1 = p.Person()
 
     firstName = input('Official First Name: ')
-    firstName = cQ.askIfcorrect(firstName)
+    firstName = cQ.askIfcorrect(firstName, forcealpha=True)
     p1.addName(0, firstName, 1)
+
+    
 
     familyName = input('Family Name: ')
     familyName = cQ.askIfcorrect(familyName)
