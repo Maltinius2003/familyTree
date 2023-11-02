@@ -1,8 +1,10 @@
-def name_to_name_parts(nameStr):
+def string_to_parts(nameStr):
     parts = []
     sepSymbols = []
-
     currentPart = ""
+
+    nameStr = nameStr.strip(" -")# Entferne führende und abschließende " "/"-"
+
     for char in nameStr:
         if char == ' ' or char == '-':
             if currentPart:
@@ -17,8 +19,8 @@ def name_to_name_parts(nameStr):
 
     return parts, sepSymbols
 
-def strList_to_str(strList, gap='-'):
-    complete = gap.join(strList)
+def strList_to_str(strList):
+    complete = ''.join(strList)
     return complete
 
 def name_to_str(self):

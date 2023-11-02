@@ -134,7 +134,7 @@ class Person:
         self.godchilds = godchilds
 
     def addName(self, firstSecondFamily, n, type=0, origin=1):
-        nameParts, sepSymbols = hm.name_to_name_parts(n)
+        nameParts, sepSymbols = hm.string_to_parts(n)
         complete = dt.Name()
         for namePart in nameParts:
             complete.nameComplete.append(dt.Name.NamePart(namePart))

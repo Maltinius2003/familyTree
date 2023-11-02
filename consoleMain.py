@@ -21,8 +21,6 @@ def createPerson():
     familyName = cQ.askIfcorrect(familyName)
     p1.addName(2, familyName)
 
-
-
     persons.append(p1)
 
 if __name__ == "__main__":
