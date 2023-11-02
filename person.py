@@ -25,6 +25,47 @@ class Person:
     def __str__(self):
         return self.getAllFirstNames()
 
+    def addName(self, firstSecondFamily, n, type=0, origin=1):
+        if n != '':
+            nameParts, sepSymbols = hm.name_to_name_parts(n)
+            complete = dt.Name()
+            for namePart in nameParts:
+                complete.nameComplete.append(dt.Name.NamePart(namePart))
+            complete.nameSepSymbols = sepSymbols
+            complete.type = type
+            complete.origin = origin
+            if firstSecondFamily == 0:
+                self.firstNames.append(complete)
+            elif firstSecondFamily == 1:
+                self.secondNames.append(complete)
+            elif firstSecondFamily == 2:
+                self.familyNames.append(complete)
+
+    def delLastAddedName(self, firstSecondFamily):
+        if firstSecondFamily == 0:
+            self.firstNames.pop()
+        elif firstSecondFamily == 1:
+            self.secondNames.pop()
+        elif firstSecondFamily == 2:
+            self.familyNames.pop()
+
+    def getFirstNames(self):
+        return self.firstNames
+    
+    def getOffFirstName(self):
+        for name in self.firstNames:
+            if name.type == 1 and name.takenDate == "":
+                return hm.strList_to_str(name)
+        return "-1"
+
+    def getLastAddedFirstName(self):
+        if len(self.firstNames) != 0:
+            return hm.name_to_str(self.firstNames[-1])
+        return ""
+    
+
+
+
     def isAdoptedFather(self):
         return self.adoptedFather
 
@@ -134,7 +175,7 @@ class Person:
         self.godchilds = godchilds
 
     def addName(self, firstSecondFamily, n, type=0, origin=1):
-        nameParts, sepSymbols = hm.string_to_parts(n)
+        nameParts, sepSymbols = hm.name_to_name_parts(n)
         complete = dt.Name()
         for namePart in nameParts:
             complete.nameComplete.append(dt.Name.NamePart(namePart))
