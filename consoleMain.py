@@ -17,7 +17,7 @@ def createPerson():
     firstName = cQ.askIfcorrect(firstName, forcealpha=True)
     p1.addName(0, firstName, 1)
 
-    
+    secondName = input('Second Names')
 
     familyName = input('Family Name: ')
     familyName = cQ.askIfcorrect(familyName)
