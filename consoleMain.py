@@ -7,17 +7,21 @@ persons = []
 
 def main():
     createPerson()
-    for n in persons[0].getFirstNames():
-        print(hm.name_to_str(n))
+    #for n in persons[0].getFirstNames():
+        #print(hm.name_to_str(n))
+    print(persons[0])
 
 def createPerson():
     p1 = p.Person()
 
     firstName = input('Official First Name: ')
-    firstName = cQ.askIfcorrect(firstName, forcealpha=True)
+    firstName = cQ.askIfcorrect(firstName, [' '])
     p1.addName(0, firstName, 1)
 
-    secondName = input('Second Names')
+    secondNames = input('Second Names: ')
+    if secondNames != '':
+        secondNames = cQ.askIfcorrect(secondNames)
+        p1.addNames(1, secondNames)
 
     familyName = input('Family Name: ')
     familyName = cQ.askIfcorrect(familyName)

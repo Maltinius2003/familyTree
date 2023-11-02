@@ -1,12 +1,36 @@
+'''
 def string_to_parts(nameStr):
     parts = []
     sepSymbols = []
     currentPart = ""
 
-    nameStr = nameStr.strip(" -")# Entferne führende und abschließende " "/"-"
+    nameStr = nameStr.strip(" -") # Entferne führende und abschließende " "/"-"
 
     for char in nameStr:
         if char == ' ' or char == '-':
+            if currentPart:
+                parts.append(currentPart)
+                currentPart = ""
+            sepSymbols.append(char)
+        else:
+            currentPart += char
+
+    if currentPart:
+        parts.append(currentPart)
+
+    return parts, sepSymbols
+'''
+
+def string_to_parts(nameStr, sepSymbolsList):
+    parts = []
+    sepSymbols = []
+    currentPart = ""
+
+    for symbol in sepSymbolsList:
+        nameStr = nameStr.strip(symbol)
+
+    for char in nameStr:
+        if char in sepSymbolsList:
             if currentPart:
                 parts.append(currentPart)
                 currentPart = ""
@@ -39,6 +63,33 @@ def getLongestListinList(listoflists):
             pos = i
     return listoflists[pos]
     
+def stringTabuChars(s, chars=[]):
+    for t in chars:
+        if t in s:
+            return False
+    return True
+
+#test if space or - is leading or closing
+def testSpaceDashLeadingClosing(name):
+    if name[0] == ' ' or name[0] == '-':
+        return False
+    if name[-1] == ' ' or name[-1] == '-':
+        return False
+    return True
+
+#test if space or - together   
+def testSpaceDashTogether(s):
+    for i in range(len(s)-1):
+        if s[i] == ' ' and s[i+1] == ' ':
+            return False
+        if s[i] == '-' and s[i+1] == '-':
+            return False
+        if s[i] == ' ' and s[i+1] == '-':
+            return False
+        if s[i] == '-' and s[i+1] == ' ':
+            return False
+    return True
+
 ### Noch nicht überarbeitet
 def askFirstNameOrigin(self):
     print("Welchen Ursprung hat der Name " + name_to_str(self) + "?")

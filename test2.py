@@ -1,5 +1,23 @@
-eingabe_string = "   -       -          -    -            -     Beispiel-String mit Leerzeichen und Bindestrichen am Anfang und Ende   -   "
+def string_to_parts(nameStr, sepSymbolsList):
+    parts = []
+    sepSymbols = []
+    currentPart = ""
 
-bereinigter_string = eingabe_string.strip(" -")
+    for symbol in sepSymbolsList:
+        nameStr = nameStr.strip(symbol)
 
-print("Bereinigter String:", bereinigter_string)
+    for char in nameStr:
+        if char in sepSymbolsList:
+            if currentPart:
+                parts.append(currentPart)
+                currentPart = ""
+            sepSymbols.append(char)
+        else:
+            currentPart += char
+
+    if currentPart:
+        parts.append(currentPart)
+
+    return parts, sepSymbols
+
+print(string_to_parts("Hans-Peter ddghg", [' ', '-']))
