@@ -1,0 +1,24 @@
+# Hauptfenster
+RootLayout:
+    orientation: 'vertical'
+
+    # Titel
+    Label:
+        text: 'Stammbaum'
+        font_size: 20
+
+    # Schaltflächen
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Button:
+            text: 'Datensatz auswählen'
+            on_press: app.open_dataset()
+
+        Button:
+            text: 'Neue Person erstellen'
+            on_press: app.create_person()
+
+        Button:
+            text: 'Einstellungen'
+            on_press: app.open_settings()
