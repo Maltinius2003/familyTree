@@ -38,7 +38,7 @@ class AddPersonPopup(Popup):
         super(AddPersonPopup, self).__init__(**kwargs)
         self.title = 'Add Person'
         self.size_hint = (None, None)
-        self.size = (500, 300)
+        self.size = (800, 500)
         self.auto_dismiss = False
 
         # Create TextInput fields
@@ -48,16 +48,21 @@ class AddPersonPopup(Popup):
         self.academicDegree = TextInput(multiline=False, hint_text='Academic Degree')
 
         # Create Dropdowns for birthdate
-        self.day_dropdown = self.create_dropdown_button('Day', list(map(str, range(1, 32))))
-        self.month_dropdown = self.create_dropdown_button('Month', list(map(str, range(1, 13))))
-        self.year_input = TextInput(multiline=False, hint_text='Year')
+        self.birth_day_dropdown = self.create_dropdown_button('Day', list(map(str, range(1, 32))))
+        self.birth_month_dropdown = self.create_dropdown_button('Month', list(map(str, range(1, 13))))
+        self.birth_year_input = TextInput(multiline=False, hint_text='Year')
+
+        # Create Dropdowns for deathdate
+        self.death_day_dropdown = self.create_dropdown_button('Day', list(map(str, range(1, 32))))
+        self.death_month_dropdown = self.create_dropdown_button('Month', list(map(str, range(1, 13))))
+        self.death_year_input = TextInput(multiline=False, hint_text='Year')
 
         # Create Buttons
-        cancel_button = Button(text='Cancel', on_press=self.dismiss, size_hint=(None, None), height=30)
-        add_button = Button(text='Add', on_press=self.add_person, size_hint=(None, None), height=30)
+        cancel_button = Button(text='Cancel', on_press=self.dismiss)
+        add_button = Button(text='Add', on_press=self.add_person)
 
         # Create GridLayout and add widgets
-        popupLayout = GridLayout(cols=2, spacing=10, padding=10)
+        popupLayout = GridLayout(cols=2, spacing=5, padding=10)
         popupLayout.add_widget(Label(text='First Name:'))
         popupLayout.add_widget(self.firstName)
 
@@ -71,9 +76,18 @@ class AddPersonPopup(Popup):
         popupLayout.add_widget(self.academicDegree)
 
         popupLayout.add_widget(Label(text='Birthdate:'))
-        popupLayout.add_widget(self.day_dropdown)
-        popupLayout.add_widget(self.month_dropdown)
-        popupLayout.add_widget(self.year_input)
+        birthdateLayout = GridLayout(cols=3, spacing=10, padding=10)
+        birthdateLayout.add_widget(self.birth_day_dropdown)
+        birthdateLayout.add_widget(self.birth_month_dropdown)
+        birthdateLayout.add_widget(self.birth_year_input)
+        popupLayout.add_widget(birthdateLayout)
+
+        popupLayout.add_widget(Label(text='Deathdate:'))
+        deathdateLayout = GridLayout(cols=3, spacing=10, padding=10)
+        deathdateLayout.add_widget(self.death_day_dropdown)
+        deathdateLayout.add_widget(self.death_month_dropdown)
+        deathdateLayout.add_widget(self.death_year_input)
+        popupLayout.add_widget(deathdateLayout)
         
         popupLayout.add_widget(cancel_button)
         popupLayout.add_widget(add_button)
@@ -103,7 +117,8 @@ class AddPersonPopup(Popup):
             f"Second Names: {self.secondNames.text}\n"
             f"Family Name: {self.familyName.text}\n"
             f"Academic Degree: {self.academicDegree.text}\n"
-            f"Birthdate: {self.day_dropdown.text}/{self.month_dropdown.text}/{self.year_input.text}"
+            f"Birthdate: {self.birth_day_dropdown.text}/{self.birth_month_dropdown.text}/{self.birth_year_input.text}\n"
+            f"Deathdate: {self.death_day_dropdown.text}/{self.death_month_dropdown.text}/{self.death_year_input.text}"
         )
         print(f"Adding person with info:\n{person_info}")
         self.dismiss()
