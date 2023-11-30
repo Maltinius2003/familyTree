@@ -1,4 +1,3 @@
-from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
 from kivy.uix.button import Button
@@ -6,40 +5,19 @@ from kivy.uix.popup import Popup
 from kivy.uix.textinput import TextInput
 from kivy.uix.dropdown import DropDown
 
-class Root(GridLayout):
-
-    def __init__(self, **kwargs):
-        super(Root, self).__init__(**kwargs)
-        self.cols = 1
-        self.add_widget(Label(text='Family Tree App', font_size=50))
-        self.add_widget(Button(text='Select Family Tree', font_size=20, on_press=self.select_family_tree))
-        self.add_widget(Button(text='Add Person', font_size=20, on_press=self.add_person))
-        self.add_widget(Button(text='Settings', font_size=20, on_press=self.open_settings))
-        self.add_widget(Button(text='Exit', font_size=20, on_press=self.exit_app))
-
-    def select_family_tree(self, instance):
-        print("Select Family Tree")
-
-    def add_person(self, instance):
-        print("Add Person")
-        popup = AddPersonPopup()
-        popup.open()
-
-    def open_settings(self, instance):
-        print("Open Settings")
-
-    def exit_app(self, instance):
-        print("Exit")
-        App.get_running_app().stop()
+import helpMethods as hm
 
 class AddPersonPopup(Popup):
 
-    def __init__(self, **kwargs):
+    def __init__(self, religions, **kwargs):
         super(AddPersonPopup, self).__init__(**kwargs)
         self.title = 'Add Person'
         self.size_hint = (None, None)
         self.size = (800, 500)
         self.auto_dismiss = False
+
+        # Übergabeparameter
+        self.religions = religions
 
         # Create TextInput fields
         self.firstName = TextInput(multiline=False, hint_text='First Name')
@@ -56,6 +34,9 @@ class AddPersonPopup(Popup):
         self.death_day_dropdown = self.create_dropdown_button('Day', list(map(str, range(1, 32))))
         self.death_month_dropdown = self.create_dropdown_button('Month', list(map(str, range(1, 13))))
         self.death_year_input = TextInput(multiline=False, hint_text='Year')
+
+        transposed_mainReligion = hm.transpose_list(self.religions[0])
+        self.mainReligion_dropdown = self.create_dropdown_button('Religion', transposed_mainReligion[-1])
 
         # Create Buttons
         cancel_button = Button(text='Cancel', on_press=self.dismiss)
@@ -88,6 +69,9 @@ class AddPersonPopup(Popup):
         deathdateLayout.add_widget(self.death_month_dropdown)
         deathdateLayout.add_widget(self.death_year_input)
         popupLayout.add_widget(deathdateLayout)
+
+        popupLayout.add_widget(Label(text='Religion:'))
+        popupLayout.add_widget(self.mainReligion_dropdown)
         
         popupLayout.add_widget(cancel_button)
         popupLayout.add_widget(add_button)
@@ -122,11 +106,3 @@ class AddPersonPopup(Popup):
         )
         print(f"Adding person with info:\n{person_info}")
         self.dismiss()
-
-class MyApp(App):
-
-    def build(self):
-        return Root()
-
-if __name__ == '__main__':
-    MyApp().run()
