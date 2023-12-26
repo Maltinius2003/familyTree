@@ -73,6 +73,7 @@ class AddPersonPopup(Popup):
         popupLayout.add_widget(Label(text='Religion:'))
         popupLayout.add_widget(self.mainReligion_dropdown)
         
+        
         popupLayout.add_widget(cancel_button)
         popupLayout.add_widget(add_button)
 
