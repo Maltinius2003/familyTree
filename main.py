@@ -1,16 +1,21 @@
-from kivy.app import App
+from kivymd.app import MDApp
+from kivy.uix.screenmanager import ScreenManager
+import showfamilytree, menu, addfamilytree, settings
 
-import initialize
-import gui.root
+# hierarhy:
+#   familyTreeApp (App)
+#   |- MyScreens (ScreenManager)
+#      |- ShowFamilyTreeScreen (Screen)
+#      |- MenuScreen (Screen)
+#      |- AddFamilyTreeScreen (Screen)
+#      |- Settings (Screen)
 
-global religions
+class MyScreens(ScreenManager):
+    def screen_manager_method(self):
+        print('Hello from screen manager')
 
-class MyApp(App):
+class familyTreeApp(MDApp):
+    def app_method(self):
+        print('Hello from app')
 
-    def build(self):
-        return gui.root.Root(religions)
-
-if __name__ == '__main__':
-    religions = initialize.importReligions()
-    MyApp().run()
-    
+familyTreeApp().run()
