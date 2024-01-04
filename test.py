@@ -1,16 +1,38 @@
-import csv
-import helpMethods as hm
-with open('religions.csv') as f:
-    reader = csv.reader(f)
-    religions = list(reader)
+from kivy.lang import Builder
 
-longestLength = len(hm.getLongestListinList(religions))
-orderdReligions = []
-for i in range(longestLength-1): orderdReligions.append([])
+from kivymd.app import MDApp
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.list import IRightBodyTouch
 
-for list in religions:
-    for i in range(2, longestLength+1): #Gibt nur mindestens zweiteilige Spalten
-        if len(list) == i:
-            orderdReligions[i-2].append(list)
+KV = '''
+OneLineAvatarIconListItem:
+    text: "Language"
+    on_size:
+        self.ids._right_container.width = container.width
+        self.ids._right_container.x = container.width
 
-print(orderdReligions[0])
+    IconLeftWidget:
+        icon: "flag"
+
+    YourContainer:
+        id: container
+
+        MDIconButton:
+            id: button
+            icon: "language-python"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_release: app.dropdown1.open()
+'''
+
+
+class YourContainer(IRightBodyTouch, MDBoxLayout):
+    adaptive_width = True
+
+
+class Example(MDApp):
+    def build(self):
+        self.theme_cls.theme_style = "Dark"
+        return Builder.load_string(KV)
+
+
+Example().run()

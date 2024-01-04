@@ -1,0 +1,38 @@
+#:kivy 1.0.9
+
+<SettingsScreen>:
+    name: 'settings'
+    MDLabel:
+        id: 'settings'
+        text: app.t('Settings')
+        halign: 'center'
+        pos_hint: {'center_x':0.5,'center_y':0.9}
+        font_style: 'H2'
+
+    ScrollView:
+        do_scroll_x: False
+        do_scroll_y: True
+        pos_hint: {'center_x':0.5,'center_y':0.35}
+
+        MDList:
+            OneLineAvatarIconListItem:
+                text: app.t('Language') + ': ' + app.language
+
+                IconLeftWidget:
+                    icon: "flag"
+
+                IconRightWidget:
+                    id: 'cog'
+                    icon: "cog"
+                    on_press: root.dropdownLanguages(self)  
+
+
+            OneLineListItem:
+                text: 'Setting 2'
+                on_press: root.manager.current = 'setting2'
+
+    
+    MDRectangleFlatButton:
+        text: 'Back'
+        pos_hint: {'center_x':0.5,'center_y':0.1}
+        on_press: root.manager.current = 'menu'
