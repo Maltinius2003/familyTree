@@ -1,29 +1,38 @@
-import csv
-import helpMethods as hm
+from kivy.lang import Builder
 
-with open('religions.csv') as f:
-    reader = csv.reader(f)
-    religions = list(reader)
+from kivymd.app import MDApp
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.list import IRightBodyTouch
 
-longestLength = len(hm.getLongestListinList(religions))
-orderdReligions = []
-for i in range(longestLength-1): orderdReligions.append([])
+KV = '''
+OneLineAvatarIconListItem:
+    text: "Language"
+    on_size:
+        self.ids._right_container.width = container.width
+        self.ids._right_container.x = container.width
 
-for list in religions:
-    for i in range(2, longestLength+1): #Gibt nur mindestens zweiteilige Spalten
-        if len(list) == i:
-            orderdReligions[i-2].append(list)
+    IconLeftWidget:
+        icon: "flag"
 
-#print(orderdReligions)
+    YourContainer:
+        id: container
+
+        MDIconButton:
+            id: button
+            icon: "language-python"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            on_release: app.dropdown1.open()
+'''
 
 
-original_list = [
-    ['0', 'None'], ['1', 'Unknown'], ['2', 'Other'], ['3', 'Christianity'], ['4', 'Islam '],
-    ['5', 'Judaism'], ['6', 'Hinduism'], ['7', 'Buddhism'], ['8', 'Sikhism'], ['9', 'BahÃ¡Ê¼Ã\xad Faith'],
-    ['10', 'Shintoism'], ['11', 'Taoism'], ['12', 'Zoroastrianism'], ['13', 'Jainism'], ['14', 'Confucianism']
-]
+class YourContainer(IRightBodyTouch, MDBoxLayout):
+    adaptive_width = True
 
-transposed_list = [[item[i] for item in original_list] for i in range(len(original_list[0]))]
 
-print(transposed_list)
+class Example(MDApp):
+    def build(self):
+        self.theme_cls.theme_style = "Dark"
+        return Builder.load_string(KV)
 
+
+Example().run()

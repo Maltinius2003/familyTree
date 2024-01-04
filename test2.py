@@ -1,28 +1,83 @@
-original_list = [
-    ['0', 'None'], ['1', 'Unknown'], ['2', 'Other'], ['3', 'Christianity'], ['4', 'Islam '],
-    ['5', 'Judaism'], ['6', 'Hinduism'], ['7', 'Buddhism'], ['8', 'Sikhism'], ['9', 'BahÃ¡Ê¼Ã\xad Faith'],
-    ['10', 'Shintoism'], ['11', 'Taoism'], ['12', 'Zoroastrianism'], ['13', 'Jainism'], ['14', 'Confucianism']
-]
+from kivymd.app import MDApp
+from kivymd.uix.menu import MDDropdownMenu
 
-def transpose_list(input_list):
-    transposed_list = []
+from kivy.properties import StringProperty
+from kivy.lang import Builder
 
-    # Bestimme die Anzahl der Spalten
-    num_columns = len(input_list[0])
+KV = """
+Screen:
+    MDTextField:
+        id: fahrenheit
+        hint_text:"Enter Fahrenheit"
+        helper_text: "Once you enter the fahrenheit the press submit"
+        helper_text_mode: "on_focus"
+        icon_right: "temperature-fahrenheit"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+        size: 200, 25
+        size_hint: None, None
 
-    # Iteriere über die Spalten
-    for i in range(num_columns):
-        # Erstelle eine Liste für die aktuelle Spalte
-        current_column = []
+    MDRoundFlatButton:
+        text: "Enter"
+        pos_hint: {'center': (0.5,0.2)}
+        text_color: 0, 1, 0, 1
+        size_hint: 0.25, 0.20
+        on_release: app.show_data()
 
-        # Iteriere über die Zeilen und füge das i-te Element zur aktuellen Spalte hinzu
-        for row in input_list:
-            current_column.append(row[i])
+    MDIconButton:
+        id: button
+        icon: "language-python"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        on_release: app.dropdown1.open()
+"""
 
-        # Füge die aktuelle Spalte zur transponierten Liste hinzu
-        transposed_list.append(current_column)
 
-    return transposed_list
+class DemoApp(MDApp):
 
-transposed_list = transpose_list(original_list)
-print(transposed_list)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.screen = Builder.load_string(KV)
+
+        menu_items = [
+            {
+                "viewclass": "OneLineListItem",
+                "text": "Option1",
+                "on_release": lambda *args: self.callback()
+            }   ,
+            {
+                "viewclass": "OneLineListItem",
+                "text": "Option2",
+                "on_release": lambda *args: self.callback()
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "text": "Option3",
+                "on_release": lambda *args: self.callback()
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "text": "Option4",
+                "on_release": lambda *args: self.callback()
+            },
+            {
+                "viewclass": "OneLineListItem",
+                "text": "Option5",
+                "on_release": lambda *args: self.callback()
+            },
+
+        ]
+
+        self.dropdown1 = MDDropdownMenu(items=menu_items, width_mult=4, caller=self.screen.ids.button)
+
+    def build(self):
+        return self.screen
+
+    def show_data(self):
+        input_fahrenheit = self.root.ids.fahrenheit.text
+        print(input_fahrenheit)
+
+    @staticmethod
+    def callback():
+        print("cookies")
+
+
+DemoApp().run()
