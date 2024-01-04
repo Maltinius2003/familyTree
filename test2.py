@@ -16,6 +16,7 @@ class Root(GridLayout):
         self.add_widget(Button(text='Add Person', font_size=20, on_press=self.add_person))
         self.add_widget(Button(text='Settings', font_size=20, on_press=self.open_settings))
         self.add_widget(Button(text='Exit', font_size=20, on_press=self.exit_app))
+        
 
     def select_family_tree(self, instance):
         print("Select Family Tree")
