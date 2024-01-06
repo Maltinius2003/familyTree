@@ -6,6 +6,8 @@ from kivymd.uix.button import MDFlatButton
 class SettingsScreen(Screen):
     def __init__(self, **kwargs):
         self.languageList = self.lookForLanguages()
+        self.languageList.append('EN')
+        self.languageList.sort()
         self.langItems = [
             {
                 "viewclass": "OneLineListItem",
