@@ -25,7 +25,7 @@ class familyTreeApp(MDApp):
         
         super().__init__(**kwargs)
 
-        #self.setLanguage('EN')
+        #self.setLanguage('DE')
 
     def setLanguage(self, lang):
         if self.language == lang.upper():
