@@ -35,7 +35,7 @@ class familyTreeApp(MDApp):
             data = {}
             file_path = 'languages/' + lang.lower() + '.csv'
             with open(file_path, 'r') as file:
-                reader = csv.reader(file)
+                reader = csv.reader(file, delimiter=';')
                 for row in reader:
                     key = row[0]
                     value = row[1]

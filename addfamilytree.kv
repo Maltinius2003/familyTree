@@ -6,25 +6,39 @@
         text: app.t('Create initial person:')
         halign: 'center'
         pos_hint: {'center_x':0.5,'center_y':0.9}
+
     MDTextField:
         id: firstname
         hint_text: app.t('First Name')
-        helper_text: app.t('Enter First name')
+        helper_text: app.t('Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul')
         helper_text_mode: 'on_focus'
         pos_hint: {'center_x':0.5,'center_y':0.8}
         size_hint_x: None
         width: 300
-        on_text: root.isalpha(self)
+        on_text: root.checkFirstName(self)
+        on_focus: root.checkDashAtEnd(self)
+        
+    MDTextField:
+        id: seconsnames
+        hint_text: app.t('Second Name(s)')
+        helper_text: app.t('Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter')
+        helper_text_mode: 'on_focus'
+        pos_hint: {'center_x':0.5,'center_y':0.7}
+        size_hint_x: None
+        width: 300
+        on_text: root.checkSecondNames(self)
+        on_focus: root.checkDashAtEnd(self)
 
     MDTextField:
         id: lastname
         hint_text: app.t('Last Name')
         helper_text: app.t('Enter Last name')
         helper_text_mode: 'on_focus'
-        pos_hint: {'center_x':0.5,'center_y':0.7}
+        pos_hint: {'center_x':0.5,'center_y':0.6}
         size_hint_x: None
         width: 300
-        on_text: root.isalpha(self)
+        on_text: root.checkLastName(self)
+        on_focus: root.checkDashAtEnd(self)
 
 
 
