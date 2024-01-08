@@ -37,13 +37,15 @@ class AddFamilyTreeScreen(Screen):
         # Update the instance text with the cleaned text
         instance.text = cleaned_text
 
-    def checkDashAtEnd(self, instance):
-        # Check if the last character is a dash, if so, throw an error
-        if instance.text[-1:] == '-':
+    def checkDashOrSpaceAtEnd(self, instance):
+        # Check if the last character is a dash or space, if so, throw an error
+        if instance.text[-1:] == '-' or instance.text[-1:] == ' ':
             instance.error = True
 
     def checkLastName(self, instance):
         self.checkSecondNames(instance)
+
+    
          
             
 

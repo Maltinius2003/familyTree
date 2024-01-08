@@ -16,7 +16,7 @@
         size_hint_x: None
         width: 300
         on_text: root.checkFirstName(self)
-        on_focus: root.checkDashAtEnd(self)
+        on_focus: root.checkDashOrSpaceAtEnd(self)
         
     MDTextField:
         id: seconsnames
@@ -27,7 +27,7 @@
         size_hint_x: None
         width: 300
         on_text: root.checkSecondNames(self)
-        on_focus: root.checkDashAtEnd(self)
+        on_focus: root.checkDashOrSpaceAtEnd(self)
 
     MDTextField:
         id: lastname
@@ -38,7 +38,7 @@
         size_hint_x: None
         width: 300
         on_text: root.checkLastName(self)
-        on_focus: root.checkDashAtEnd(self)
+        on_focus: root.checkDashOrSpaceAtEnd(self)
 
 
 
