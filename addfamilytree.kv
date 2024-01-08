@@ -1,18 +1,41 @@
 #:kivy 1.0.9
 
+<GenderButton@MDRectangleFlatButton>:
+    theme_text_color: 'Custom'
+    text_color: (1, 0, 0, 1) if self.state == 'down' else (0, 0, 0, 1)
+
 <AddFamilyTreeScreen>:
     name: 'addfamilytree'
+    
     MDLabel:
         text: app.t('Create initial person:')
         halign: 'center'
         pos_hint: {'center_x':0.5,'center_y':0.9}
+
+    FloatLayout:
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.5, 0.1  # Adjust these values as needed
+            pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            GenderButton:
+                text: 'M'
+                group: 'gender'
+                on_release: app.select_gender(self)
+            GenderButton:
+                text: 'F'
+                group: 'gender'
+                on_release: app.select_gender(self)
+            GenderButton:
+                text: 'D'
+                group: 'gender'
+                on_release: app.select_gender(self)
 
     MDTextField:
         id: firstname
         hint_text: app.t('First Name')
         helper_text: app.t('Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul')
         helper_text_mode: 'on_focus'
-        pos_hint: {'center_x':0.5,'center_y':0.8}
+        pos_hint: {'center_x':0.5,'center_y':0.7}
         size_hint_x: None
         width: 300
         on_text: root.checkFirstName(self)
@@ -23,7 +46,7 @@
         hint_text: app.t('Second Name(s)')
         helper_text: app.t('Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter')
         helper_text_mode: 'on_focus'
-        pos_hint: {'center_x':0.5,'center_y':0.7}
+        pos_hint: {'center_x':0.5,'center_y':0.6}
         size_hint_x: None
         width: 300
         on_text: root.checkSecondNames(self)
@@ -34,18 +57,13 @@
         hint_text: app.t('Last Name')
         helper_text: app.t('Enter Last name')
         helper_text_mode: 'on_focus'
-        pos_hint: {'center_x':0.5,'center_y':0.6}
+        pos_hint: {'center_x':0.5,'center_y':0.5}
         size_hint_x: None
         width: 300
         on_text: root.checkLastName(self)
         on_focus: root.checkDashOrSpaceAtEnd(self)
 
-
-
-           
-
     MDRectangleFlatButton:
         text: 'Back'
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: root.manager.current = 'menu'
-    
