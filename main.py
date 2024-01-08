@@ -20,29 +20,31 @@ class MyScreens(ScreenManager):
 class familyTreeApp(MDApp):
     def __init__(self, **kwargs):
         self.title = 'Family Tree App'
-        self.language = ''
+        self.language = 'EN'
         self.languageDict = {}
-        self.setLanguage('EN')
         
         super().__init__(**kwargs)
+
+        #self.setLanguage('DE')
 
     def setLanguage(self, lang):
         if self.language == lang.upper():
             return
-        if lang.upper() == 'EN':
+        if lang.upper() != 'EN':
+            import csv
+            data = {}
+            file_path = 'languages/' + lang.lower() + '.csv'
+            with open(file_path, 'r') as file:
+                reader = csv.reader(file, delimiter=';')
+                for row in reader:
+                    key = row[0]
+                    value = row[1]
+                    data[key] = value
+            self.languageDict = data
+            self.language = lang.upper()
+        else:
             self.language = 'EN'
-            return
-        import csv
-        data = {}
-        file_path = 'languages/' + lang.lower() + '.csv'
-        with open(file_path, 'r') as file:
-            reader = csv.reader(file)
-            for row in reader:
-                key = row[0]
-                value = row[1]
-                data[key] = value
-        self.languageDict = data
-        self.language = lang.upper()
+            self.languageDict = {}
 
         #Reload the screens
         # Get the instance of the ScreenManager
