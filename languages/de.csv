@@ -7,3 +7,7 @@ First Name;Vorname
 Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul, Hans-Peter;Vorname eingeben z.B. Hans, Hans-Peter, Hans-Peter-Paul
 Second Name(s);Zweitname(n)
 Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter;Zweitname(n) eingeben z.B. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter
+M;M
+F;W
+D;D
+U;U

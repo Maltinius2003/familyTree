@@ -13,22 +13,51 @@
         pos_hint: {'center_x':0.5,'center_y':0.9}
 
     FloatLayout:
-        BoxLayout:
-            orientation: 'horizontal'
-            size_hint: 0.5, 0.1  # Adjust these values as needed
+        #Float Layout farbig machen
+        #canvas.before:
+        #    Color:
+        #        rgba: 0, 1, 0, 1  # Green color
+        #    Rectangle:
+        #        pos: self.pos
+        #        size: self.size
+        GridLayout:
+            cols: 4
+            size_hint: 0.3, 0.05  # Adjust these values as needed
             pos_hint: {'center_x': 0.5, 'center_y': 0.8}
+            #canvas.before:
+            #    Color:
+            #        rgba: 0, 0, 1, 1  # Blue color
+            #    Rectangle:
+            #        pos: self.pos
+            #        size: self.size
             GenderButton:
-                text: 'M'
+                text: app.t('M')
                 group: 'gender'
-                on_release: app.select_gender(self)
+                on_release: root.setGenderMale(self)
+                size_hint: 1, 1
+                state: 'down' if root.getGender(self) == 'M' else 'normal'
+
             GenderButton:
-                text: 'F'
+                text: app.t('F')
                 group: 'gender'
-                on_release: app.select_gender(self)
+                on_release: root.setGenderFemale(self)
+                size_hint: 1, 1
+                state: 'down' if root.getGender(self) == 'F' else 'normal'
+
             GenderButton:
-                text: 'D'
+                text: app.t('D')
                 group: 'gender'
-                on_release: app.select_gender(self)
+                on_release: root.setGenderDivers(self)
+                size_hint: 1, 1
+                state: 'down' if root.getGender(self) == 'D' else 'normal'
+
+            GenderButton:
+                text: app.t('U')
+                group: 'gender'
+                on_release: root.setGenderUnknown(self)
+                size_hint: 1, 1
+                state: 'down' if root.getGender(self) == 'U' else 'normal'
+
 
     MDTextField:
         id: firstname

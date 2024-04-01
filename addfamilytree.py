@@ -1,6 +1,12 @@
 from kivy.uix.screenmanager import Screen
 
 class AddFamilyTreeScreen(Screen):
+
+    def __init__(self, **kwargs):
+        self.gender = 'U'
+        super().__init__(**kwargs)
+
+
     def screen_method(self):
         print('Hello from addfamilytree')
 
@@ -44,6 +50,27 @@ class AddFamilyTreeScreen(Screen):
 
     def checkLastName(self, instance):
         self.checkSecondNames(instance)
+
+    def setGenderMale(self, instance):
+        instance.active = True
+        print('Male')
+
+    def setGenderFemale(self, instance):
+        instance.active = True
+        print('Female')
+
+    def setGenderDivers(self, instance):
+        instance.active = True
+        print('Divers')
+
+    def setGenderUnknown(self, instance):
+        instance.active = True
+        print('Unknown')
+
+    def getGender(self, instance):
+        return self.gender
+
+        
 
     
          
