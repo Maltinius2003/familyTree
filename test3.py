@@ -1,97 +1,116 @@
+import os
+
+from faker import Faker
+
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.factory import Factory
 from kivy.properties import StringProperty
 
 from kivymd.app import MDApp
-from kivymd.uix.button import MDIconButton
-from kivymd.icon_definitions import md_icons
-from kivymd.uix.list import ILeftBodyTouch, OneLineIconListItem
-from kivymd.theming import ThemeManager
-from kivymd.utils import asynckivy
+from kivymd.uix.boxlayout import MDBoxLayout
 
-Builder.load_string('''
-<ItemForList>
-    text: root.text
+import asynckivy
 
-    IconLeftSampleWidget:
-        icon: root.icon
+KV = '''
+<UserCard>
+    adaptive_height: True
+    radius: 16
+
+    MDListItem:
+        radius: 16
+        theme_bg_color: "Custom"
+        md_bg_color: self.theme_cls.secondaryContainerColor
+
+        MDListItemLeadingAvatar:
+            source: root.album
+
+        MDListItemHeadlineText:
+            text: root.name
+
+        MDListItemSupportingText:
+            text: root.path_to_file
 
 
-<Example@MDFloatLayout>
+MDScreen:
+    md_bg_color: self.theme_cls.backgroundColor
 
     MDBoxLayout:
-        orientation: 'vertical'
+        orientation: "vertical"
+        padding: "12dp"
+        spacing: "12dp"
 
-        MDTopAppBar:
-            title: app.title
-            md_bg_color: app.theme_cls.primary_color
-            background_palette: 'Primary'
-            elevation: 4
-            left_action_items: [['menu', lambda x: x]]
+        MDLabel:
+            adaptive_height: True
+            text: "Your downloads"
+            theme_font_style: "Custom"
+            font_style: "Display"
+            role: "small"
 
-        MDScrollViewRefreshLayout:
-            id: refresh_layout
-            refresh_callback: app.refresh_callback
-            root_layout: root
-            spinner_color: "brown"
-            circle_color: "white"
+        MDSegmentedButton:
+            size_hint_x: 1
 
-            MDGridLayout:
-                id: box
-                adaptive_height: True
-                cols: 1
-''')
+            MDSegmentedButtonItem:
+                on_active: app.generate_card()
+
+                MDSegmentButtonLabel:
+                    text: "Songs"
+                    active: True
+
+            MDSegmentedButtonItem:
+                on_active: app.generate_card()
+
+                MDSegmentButtonLabel:
+                    text: "Albums"
+
+            MDSegmentedButtonItem:
+                on_active: app.generate_card()
+
+                MDSegmentButtonLabel:
+                    text: "Podcasts"
+
+        RecycleView:
+            id: card_list
+            viewclass: "UserCard"
+            bar_width: 0
+
+            RecycleBoxLayout:
+                orientation: 'vertical'
+                spacing: "16dp"
+                padding: "16dp"
+                default_size: None, dp(72)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+'''
 
 
-class IconLeftSampleWidget(ILeftBodyTouch, MDIconButton):
-    pass
-
-
-class ItemForList(OneLineIconListItem):
-    icon = StringProperty()
+class UserCard(MDBoxLayout):
+    name = StringProperty()
+    path_to_file = StringProperty()
+    album = StringProperty()
 
 
 class Example(MDApp):
-    title = 'Example Refresh Layout'
-    screen = None
-    x = 0
-    y = 15
-
     def build(self):
         self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "Orange"
-        self.screen = Factory.Example()
-        self.set_list()
+        self.theme_cls.primary_palette = "Olive"
+        return Builder.load_string(KV)
 
-        return self.screen
-
-    def set_list(self):
-        async def set_list():
-            names_icons_list = list(md_icons.keys())[self.x:self.y]
-            for name_icon in names_icons_list:
+    def generate_card(self):
+        async def generate_card():
+            for i in range(10):
                 await asynckivy.sleep(0)
-                self.screen.ids.box.add_widget(
-                    ItemForList(icon=name_icon, text=name_icon))
-        asynckivy.start(set_list())
+                self.root.ids.card_list.data.append(
+                    {
+                        "name": fake.name(),
+                        "path_to_file": f"{os.path.splitext(fake.file_path())[0]}.mp3",
+                        "album": fake.image_url(),
+                    }
+                )
 
-    def refresh_callback(self, *args):
-        '''
-        A method that updates the state of your application
-        while the spinner remains on the screen.
-        '''
-
-        def refresh_callback(interval):
-            self.screen.ids.box.clear_widgets()
-            if self.x == 0:
-                self.x, self.y = 15, 30
-            else:
-                self.x, self.y = 0, 15
-            self.set_list()
-            self.screen.ids.refresh_layout.refresh_done()
-            self.tick = 0
-
-        Clock.schedule_once(refresh_callback, 1)
+        fake = Faker()
+        self.root.ids.card_list.data = []
+        Clock.schedule_once(lambda x: asynckivy.start(generate_card()))
 
 
 Example().run()

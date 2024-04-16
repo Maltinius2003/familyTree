@@ -33,28 +33,28 @@
             GenderButton:
                 text: app.t('M')
                 group: 'gender'
-                on_release: root.setGenderMale(self)
+                on_release: root.setGender(self, 'm')
                 size_hint: 1, 1
                 state: 'down' if root.getGender(self) == 'M' else 'normal'
 
             GenderButton:
                 text: app.t('F')
                 group: 'gender'
-                on_release: root.setGenderFemale(self)
+                on_release: root.setGender(self, 'f')
                 size_hint: 1, 1
                 state: 'down' if root.getGender(self) == 'F' else 'normal'
 
             GenderButton:
                 text: app.t('D')
                 group: 'gender'
-                on_release: root.setGenderDivers(self)
+                on_release: root.setGender(self, 'd')
                 size_hint: 1, 1
                 state: 'down' if root.getGender(self) == 'D' else 'normal'
 
             GenderButton:
                 text: app.t('U')
                 group: 'gender'
-                on_release: root.setGenderUnknown(self)
+                on_release: root.setGender(self, 'u')
                 size_hint: 1, 1
                 state: 'down' if root.getGender(self) == 'U' else 'normal'
 

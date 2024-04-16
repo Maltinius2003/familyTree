@@ -51,21 +51,9 @@ class AddFamilyTreeScreen(Screen):
     def checkLastName(self, instance):
         self.checkSecondNames(instance)
 
-    def setGenderMale(self, instance):
+    def setGender(self, instance, gender):
         instance.active = True
-        print('Male')
-
-    def setGenderFemale(self, instance):
-        instance.active = True
-        print('Female')
-
-    def setGenderDivers(self, instance):
-        instance.active = True
-        print('Divers')
-
-    def setGenderUnknown(self, instance):
-        instance.active = True
-        print('Unknown')
+        print(gender)
 
     def getGender(self, instance):
         return self.gender
