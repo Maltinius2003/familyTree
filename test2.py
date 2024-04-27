@@ -1,83 +1,41 @@
 from kivymd.app import MDApp
-from kivymd.uix.menu import MDDropdownMenu
-
-from kivy.properties import StringProperty
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.pickers import MDDatePicker
 from kivy.lang import Builder
 
-KV = """
-Screen:
-    MDTextField:
-        id: fahrenheit
-        hint_text:"Enter Fahrenheit"
-        helper_text: "Once you enter the fahrenheit the press submit"
-        helper_text_mode: "on_focus"
-        icon_right: "temperature-fahrenheit"
-        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
-        size: 200, 25
-        size_hint: None, None
+KV = '''
+MDScreen:
+    MDFlatButton:
+        text: "Open Date Picker"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        on_release: app.show_date_picker()
+'''
 
-    MDRoundFlatButton:
-        text: "Enter"
-        pos_hint: {'center': (0.5,0.2)}
-        text_color: 0, 1, 0, 1
-        size_hint: 0.25, 0.20
-        on_release: app.show_data()
-
-    MDIconButton:
-        id: button
-        icon: "language-python"
-        pos_hint: {"center_x": .5, "center_y": .5}
-        on_release: app.dropdown1.open()
-"""
-
-
-class DemoApp(MDApp):
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.screen = Builder.load_string(KV)
-
-        menu_items = [
-            {
-                "viewclass": "OneLineListItem",
-                "text": "Option1",
-                "on_release": lambda *args: self.callback()
-            }   ,
-            {
-                "viewclass": "OneLineListItem",
-                "text": "Option2",
-                "on_release": lambda *args: self.callback()
-            },
-            {
-                "viewclass": "OneLineListItem",
-                "text": "Option3",
-                "on_release": lambda *args: self.callback()
-            },
-            {
-                "viewclass": "OneLineListItem",
-                "text": "Option4",
-                "on_release": lambda *args: self.callback()
-            },
-            {
-                "viewclass": "OneLineListItem",
-                "text": "Option5",
-                "on_release": lambda *args: self.callback()
-            },
-
-        ]
-
-        self.dropdown1 = MDDropdownMenu(items=menu_items, width_mult=4, caller=self.screen.ids.button)
-
+class MyApp(MDApp):
     def build(self):
-        return self.screen
+        self.theme_cls.primary_palette = "Blue"  # Optional: set the primary theme color
+        return Builder.load_string(KV)
 
-    def show_data(self):
-        input_fahrenheit = self.root.ids.fahrenheit.text
-        print(input_fahrenheit)
+    def show_date_picker(self):
+        date_picker = MDDatePicker()
+        date_picker.bind(on_save=self.on_date_save, on_cancel=self.on_date_cancel)
+        date_picker.open()
 
-    @staticmethod
-    def callback():
-        print("cookies")
+    def on_date_save(self, instance, value, date_range):
+        """
+        Handles the event when the user selects a date and confirms.
+        :param instance: the instance of the MDDatePicker.
+        :param value: the selected date.
+        :param date_range: not used here, but can be if you implement a range picker.
+        """
+        print(f'Selected date: {value}')
+        # Further processing can be done here (e.g., updating a label or storing the date)
 
+    def on_date_cancel(self, instance, value):
+        """
+        Handles the event when the user cancels the date picker.
+        """
+        print('Date picking was canceled.')
 
-DemoApp().run()
+if __name__ == '__main__':
+    MyApp().run()
