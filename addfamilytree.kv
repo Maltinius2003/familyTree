@@ -33,30 +33,30 @@
             GenderButton:
                 text: app.t('M')
                 group: 'gender'
-                on_release: root.setGender(self, 'm')
+                on_release: root.setGender('m')
                 size_hint: 1, 1
-                state: 'down' if root.getGender(self) == 'M' else 'normal'
+                state: 'down' if root.gender == 'm' else 'normal'
 
             GenderButton:
                 text: app.t('F')
                 group: 'gender'
-                on_release: root.setGender(self, 'f')
+                on_release: root.setGender('f')
                 size_hint: 1, 1
-                state: 'down' if root.getGender(self) == 'F' else 'normal'
+                state: 'down' if root.gender == 'f' else 'normal'
 
             GenderButton:
                 text: app.t('D')
                 group: 'gender'
-                on_release: root.setGender(self, 'd')
+                on_release: root.setGender('d')
                 size_hint: 1, 1
-                state: 'down' if root.getGender(self) == 'D' else 'normal'
+                state: 'down' if root.gender == 'd' else 'normal'
 
             GenderButton:
                 text: app.t('U')
                 group: 'gender'
-                on_release: root.setGender(self, 'u')
+                on_release: root.setGender('u')
                 size_hint: 1, 1
-                state: 'down' if root.getGender(self) == 'U' else 'normal'
+                state: 'down' if root.gender == 'u' else 'normal'
 
 
     MDTextField:
@@ -71,7 +71,7 @@
         on_focus: root.checkDashOrSpaceAtEnd(self)
         
     MDTextField:
-        id: seconsnames
+        id: secondnames
         hint_text: app.t('Second Name(s)')
         helper_text: app.t('Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter')
         helper_text_mode: 'on_focus'
@@ -91,6 +91,7 @@
         width: 300
         on_text: root.checkLastName(self)
         on_focus: root.checkDashOrSpaceAtEnd(self)
+    
 
     MDRectangleFlatButton:
         text: 'Back'

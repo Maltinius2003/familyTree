@@ -1,38 +1,29 @@
 from kivy.lang import Builder
 
 from kivymd.app import MDApp
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.list import IRightBodyTouch
+from kivymd.uix.pickers import MDModalInputDatePicker
 
 KV = '''
-OneLineAvatarIconListItem:
-    text: "Language"
-    on_size:
-        self.ids._right_container.width = container.width
-        self.ids._right_container.x = container.width
+MDScreen:
+    md_bg_color: self.theme_cls.backgroundColor
 
-    IconLeftWidget:
-        icon: "flag"
+    MDButton:
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        on_release: app.show_date_picker()
 
-    YourContainer:
-        id: container
-
-        MDIconButton:
-            id: button
-            icon: "language-python"
-            pos_hint: {"center_x": .5, "center_y": .5}
-            on_release: app.dropdown1.open()
+        MDButtonText:
+            text: "Open modal date picker dialog"
 '''
-
-
-class YourContainer(IRightBodyTouch, MDBoxLayout):
-    adaptive_width = True
 
 
 class Example(MDApp):
     def build(self):
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.primary_palette = "Olive"
         return Builder.load_string(KV)
+
+    def show_date_picker(self):
+        date_dialog = MDModalInputDatePicker()
+        date_dialog.open()
 
 
 Example().run()

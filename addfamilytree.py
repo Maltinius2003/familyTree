@@ -1,9 +1,15 @@
 from kivy.uix.screenmanager import Screen
+from kivy.properties import StringProperty
 
 class AddFamilyTreeScreen(Screen):
+    gender = StringProperty('u') # StringProperty nesserary to get the button state updated
+    firstName = StringProperty('') 
+    secondNames = StringProperty('')
+    lastName = StringProperty('')
+
 
     def __init__(self, **kwargs):
-        self.gender = 'U'
+        #self.gender = 'u'
         super().__init__(**kwargs)
 
 
@@ -13,7 +19,7 @@ class AddFamilyTreeScreen(Screen):
     def checkFirstName(self, instance):
         # Only allow alphanumeric characters and dashes
         cleaned_text = ''
-        print(instance.text)
+        #print(instance.text)
         for ch in instance.text:
             if ch.isalpha() or ch == '-':
                 cleaned_text += ch
@@ -51,16 +57,11 @@ class AddFamilyTreeScreen(Screen):
     def checkLastName(self, instance):
         self.checkSecondNames(instance)
 
-    def setGender(self, instance, gender):
-        instance.active = True
-        print(gender)
+    def setGender(self, gender):
+        self.gender = gender
+        #print(self.gender)
 
-    def getGender(self, instance):
-        return self.gender
 
-        
-
-    
          
             
 
