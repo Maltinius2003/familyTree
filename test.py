@@ -1,29 +1,11 @@
-from kivy.lang import Builder
+from datetime import datetime, timedelta
 
-from kivymd.app import MDApp
-from kivymd.uix.pickers import MDModalInputDatePicker
+date1 = datetime(1582, 10, 4)
+date2 = datetime(1582, 10, 15)
 
-KV = '''
-MDScreen:
-    md_bg_color: self.theme_cls.backgroundColor
+if date1.year == 1582 and date1.month == 10 and date1.day < 15 and date2.year == 1582 and date2.month == 10 and date2.day >= 15:
+    difference = date2 - date1 - timedelta(days=10)
+else:
+    difference = date2 - date1
 
-    MDButton:
-        pos_hint: {'center_x': .5, 'center_y': .5}
-        on_release: app.show_date_picker()
-
-        MDButtonText:
-            text: "Open modal date picker dialog"
-'''
-
-
-class Example(MDApp):
-    def build(self):
-        self.theme_cls.primary_palette = "Olive"
-        return Builder.load_string(KV)
-
-    def show_date_picker(self):
-        date_dialog = MDModalInputDatePicker()
-        date_dialog.open()
-
-
-Example().run()
+print(f"The difference between {date1} and {date2} is {difference.days} days.")

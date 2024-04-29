@@ -62,38 +62,128 @@
     MDTextField:
         id: firstname
         hint_text: app.t('First Name')
+        text_color_normal: 0, 0, 0, 1
         helper_text: app.t('Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul')
         helper_text_mode: 'on_focus'
         pos_hint: {'center_x':0.5,'center_y':0.7}
-        size_hint_x: None
-        width: 300
+        size_hint_x: 0.8
         on_text: root.checkFirstName(self)
         on_focus: root.checkDashOrSpaceAtEnd(self)
         
     MDTextField:
         id: secondnames
         hint_text: app.t('Second Name(s)')
+        text_color_normal: 0, 0, 0, 1
         helper_text: app.t('Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter')
         helper_text_mode: 'on_focus'
         pos_hint: {'center_x':0.5,'center_y':0.6}
-        size_hint_x: None
-        width: 300
+        size_hint_x: 0.8
         on_text: root.checkSecondNames(self)
         on_focus: root.checkDashOrSpaceAtEnd(self)
 
     MDTextField:
         id: lastname
         hint_text: app.t('Last Name')
-        helper_text: app.t('Enter Last name')
+        text_color_normal: 0, 0, 0, 1
+        helper_text: app.t('Enter Last name e.g. Meier, Meier-Schulze, Meier Schulze, Meier-Schulze Bauer')
         helper_text_mode: 'on_focus'
         pos_hint: {'center_x':0.5,'center_y':0.5}
-        size_hint_x: None
-        width: 300
+        size_hint_x: 0.8
         on_text: root.checkLastName(self)
         on_focus: root.checkDashOrSpaceAtEnd(self)
-    
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 0.8, None
+        height: self.minimum_height
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        canvas:
+            Color:
+                rgba: 0.5, 0.5, 0.5, 1  # Gray color
+            Line:
+                rounded_rectangle: (self.x, self.y - 20, self.width, self.height + 20, 10)
+                width: 1
+
+        MDLabel:
+            text: app.t('Birthdate')
+            font_size: '16sp'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+
+        GridLayout:
+            cols: 3
+            size_hint_x: 1
+            size_hint_y: None
+            height: self.minimum_height
+
+            #labels
+            MDLabel:
+                text: app.t('Day')
+                font_size: '14sp'
+                size_hint_min_x: 120
+                theme_text_color: 'Secondary'
+            
+            MDLabel:
+                text: app.t('Month')
+                font_size: '14sp'
+                size_hint_min_x: 120
+                theme_text_color: 'Secondary'
+            
+            MDLabel:   
+                text: app.t('Year')
+                font_size: '14sp'
+                size_hint_min_x: 120
+                theme_text_color: 'Secondary'
+
+            MDFlatButton:
+                id: day_button
+                text: app.t('Day')
+                theme_text_color: 'Secondary'
+                font_size: '20sp'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                width: '120dp'
+                height: '20dp'
+                on_release: root.show_day_menu()
+            
+            MDFlatButton:
+                id: month_button
+                text: app.t('Month')
+                theme_text_color: 'Secondary'
+                font_size: '20sp'
+                size_hint: 1, 1
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                width: '120dp'
+                height: '20dp'
+                on_release: root.show_month_menu()
+
+            #Jahr, nötig um übereinander zu legen
+            FloatLayout:
+                #width: '120dp'
+                #height: '50dp'  # Adjust this value to change the height of the frame
+            
+                MDFlatButton:
+                    text: app.t('Year')
+                    font_size: '20sp'
+                    width: '120dp'
+                    height: '20dp'
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    theme_text_color: 'Secondary'
+                    opacity: 0 if year_field.focus or year_field.text else 1
+                    on_release: year_field.focus = True
+            
+                MDTextField:
+                    id: year_field
+                    halign: 'center'
+                    text_color_normal: 0, 0, 0, 1
+                    input_filter: 'int'
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    font_size: '20sp'  # Same as the button font size
+                    line_color_focus: 1, 0, 0, 0
+                    line_color_normal: 1, 0, 0, 0 
 
     MDRectangleFlatButton:
-        text: 'Back'
+        text: app.t('Back')
         pos_hint: {'center_x':0.5,'center_y':0.1}
         on_press: root.manager.current = 'menu'

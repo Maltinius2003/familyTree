@@ -2,12 +2,32 @@ Settings;Einstellungen
 Language;Sprache
 Back;Zurück
 Family Tree;Stammbaum
-Create initial person;Erste Person erstellen
+Create initial person:;Erste Person erstellen
 First Name;Vorname
-Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul, Hans-Peter;Vorname eingeben z.B. Hans, Hans-Peter, Hans-Peter-Paul
+Enter First name e.g. Hans, Hans-Peter, Hans-Peter-Paul;Vorname eingeben z.B. Hans, Hans-Peter, Hans-Peter-Paul
 Second Name(s);Zweitname(n)
 Enter Second name(s) e.g. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter;Zweitname(n) eingeben z.B. Peter, Peter-Paul, Peter Paul, Peter-Paul Dieter
+Last Name;Nachname
+Enter Last name e.g. Meier, Meier-Schulze, Meier Schulze, Meier-Schulze Bauer;Nachname eingeben z.B. Meier, Meier-Schulze, Meier Schulze, Meier-Schulze Bauer
 M;M
 F;W
 D;D
 U;U
+Birthdate;Geburtsdatum
+Day;Tag
+Month;Monat
+Year;Jahr
+Unknown;Unbekannt
+January;Januar
+February;Februar
+March;März
+April;April
+May;Mai
+June;Juni
+July;Juli
+August;August
+September;September
+October;Oktober
+November;November
+December;Dezember
+Back;Zurück

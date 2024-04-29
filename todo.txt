@@ -3,4 +3,8 @@ kofessionen juden
 
 Als Namensänderungsgrund Änderung der Namesrechts von 2024
 Namen mit Leerzeichen und Bindestrichen
+
 dont allow safe when input red
+GenderButtons gehen bei größenveränderung nicht mit
+umlaute werden aus sprachdatei nicht richtig eingelesen
+v.Chr und n.Chr zu Geburtsdatum
