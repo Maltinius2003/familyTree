@@ -8,3 +8,6 @@ dont allow safe when input red
 GenderButtons gehen bei größenveränderung nicht mit
 umlaute werden aus sprachdatei nicht richtig eingelesen
 v.Chr und n.Chr zu Geburtsdatum
+Personengruppen wie "Berliner"
+
+initial Person: year texfield zu groß
