@@ -1,7 +1,6 @@
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
-from kivy.factory import Factory  # Nur für hot-reload
 
 import showfamilytree
 import menu

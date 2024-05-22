@@ -11,3 +11,5 @@ v.Chr und n.Chr zu Geburtsdatum
 Personengruppen wie "Berliner"
 
 initial Person: year texfield zu groß
+
+GenderButtons: https://kivymd.readthedocs.io/en/0.104.0/components/button/index.html
