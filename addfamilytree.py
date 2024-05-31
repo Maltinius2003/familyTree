@@ -1,32 +1,39 @@
+from time import sleep
 from kivy.uix.screenmanager import Screen
 from kivy.properties import StringProperty
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.list import OneLineListItem
 from kivy.app import App
+from custom_widgets import CustomDateWidget
     
 class AddFamilyTreeScreen(Screen):
     gender = StringProperty('u') # StringProperty nesserary to get the button state updated
-    firstName = StringProperty('') 
-    secondNames = StringProperty('')
-    lastName = StringProperty('')
-
+    firstname = 'firstname'
+    secondnames = ['secondname1', 'secondname2']
+    lastname = 'lastname'
+    birthdate = [0, 0, -1, False] # [day, month, year, bc?]
+    deathdate = [0, 0, -1, False] # [day, month, year, bc?]
 
     def __init__(self, **kwargs):
         #self.gender = 'u'
         super().__init__(**kwargs)
 
-
     def screen_method(self):
         print('Hello from addfamilytree')
 
     def checkFirstName(self, instance):
-        # Only allow alphanumeric characters and dashes
+        # Only allow alphanumeric characters and dashes, no dash-dash
         cleaned_text = ''
-        #print(instance.text)
-        for ch in instance.text:
+        previous_char = ''
+        for i, ch in enumerate(instance.text):
+            if i == 0 and ch == '-':
+                continue
             if ch.isalpha() or ch == '-':
+                if ch == '-' and previous_char == '-':
+                    continue
                 cleaned_text += ch
+                previous_char = ch
 
         # Update the instance text with the cleaned text
         instance.text = cleaned_text
@@ -58,8 +65,22 @@ class AddFamilyTreeScreen(Screen):
         if instance.text[-1:] == '-' or instance.text[-1:] == ' ':
             instance.error = True
 
+    def checkDashAtEnd(self, instance):
+        # Check if the last character is a dash or space, if so, throw an error
+        if instance.text[-1:] != '':
+            if instance.text[-1:] == '-':
+                instance.error = True
+                return False
+            else:
+                return True        
+
     def checkLastName(self, instance):
         self.checkSecondNames(instance)
+    
+    def removeSpaceAtEnd(self, text):
+        if text[-1:] == ' ':
+            return text[:-1]
+        return text
 
     def setGender(self, gender):
         self.gender = gender
@@ -67,47 +88,33 @@ class AddFamilyTreeScreen(Screen):
 
     def test(self):
         print('test')
-    
-    def show_day_menu(self):
-        days = [App.get_running_app().t('Unknown')] + [str(day) for day in range(1, 32)]
-        menu_items = [{"viewclass": "OneLineListItem", "text": day, "on_release": lambda day=day, day_number=days.index(day): self.set_day({"text": day, "number": day_number})} for day in days]
-        self.day_menu = MDDropdownMenu(
-            caller=self.ids.day_button,
-            items=menu_items,
-            position="auto"
-        )
-        self.day_menu.open()
 
-    def set_day(self, item):
-        if item['number'] == 0:
-            self.ids.day_button.text = App.get_running_app().t('Day')
-            self.ids.day_button.theme_text_color = 'Secondary'
-        else:
-            self.ids.day_button.text = item['text']
-            self.ids.day_button.theme_text_color = 'Primary'
-        print(f'Selected day: {item["text"]}, number: {item["number"]}')
-        self.day_menu.dismiss()
+    def back_to_menu(self):
+        self.manager.current = 'menu'
+        
+    def save(self, instance):
+        self.firstname = self.ids.firstname.text #remove Space unnecessary, no space allowed in first name
+        self.secondnames = self.removeSpaceAtEnd(self.ids.secondnames.text)
+        self.lastname = self.removeSpaceAtEnd(self.ids.lastname.text)
 
-    def show_month_menu(self):
-        months = ['Unknown', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-        translated_months = [App.get_running_app().t(month) for month in months]
-        menu_items = [{"viewclass": "OneLineListItem", "text": month, "on_release": lambda month=month, month_number=translated_months.index(month): self.set_month({"text": month, "number": month_number})} for month in translated_months]
-        self.month_menu = MDDropdownMenu(
-            caller=self.ids.month_button,
-            items=menu_items,
-            position="auto"
-        )
-        self.month_menu.open()
-    
-    def set_month(self, item):
-        if item['number'] == 0: 
-            self.ids.month_button.text = App.get_running_app().t('Month')
-            self.ids.month_button.theme_text_color = 'Secondary'
-        else:
-            self.ids.month_button.text = item['text']
-            self.ids.month_button.theme_text_color = 'Primary'
-        print(f'Selected month: {item["text"]}, number: {item["number"]}')
-        self.month_menu.dismiss()
+        self.birthdate[0] = self.ids.birthdate.day
+        self.birthdate[1] = self.ids.birthdate.month
+        self.birthdate[2] = self.ids.birthdate.year
+        self.birthdate[3] = self.ids.birthdate.bc
+
+        self.deathdate[0] = self.ids.deathdate.day
+        self.deathdate[1] = self.ids.deathdate.month
+        self.deathdate[2] = self.ids.deathdate.year
+        self.deathdate[3] = self.ids.deathdate.bc
+
+        print('Save button pressed')
+        print(f'Firstname: {self.firstname}')
+        print(f'Secondnames: {self.secondnames}')
+        print(f'Lastname: {self.lastname}')
+        print(f"Birthday: {self.birthdate[0]}.{self.birthdate[1]}.{self.birthdate[2]} {'BC' if self.birthdate[3] else 'AD'}")
+        print(f"Deathday: {self.deathdate[0]}.{self.deathdate[1]}.{self.deathdate[2]} {'BC' if self.deathdate[3] else 'AD'}")
+
+        
 
     
 

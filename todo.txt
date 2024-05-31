@@ -7,9 +7,12 @@ Namen mit Leerzeichen und Bindestrichen
 dont allow safe when input red
 GenderButtons gehen bei größenveränderung nicht mit
 umlaute werden aus sprachdatei nicht richtig eingelesen
-v.Chr und n.Chr zu Geburtsdatum
+*v.Chr und n.Chr zu Geburtsdatum
 Personengruppen wie "Berliner"
 
-initial Person: year texfield zu groß
+(initial Person: year texfield zu groß)
+year zahl feld zu niedrig
+wenn von textfeld direkt auf speichern, speichert es nicht
+
 
 GenderButtons: https://kivymd.readthedocs.io/en/0.104.0/components/button/index.html

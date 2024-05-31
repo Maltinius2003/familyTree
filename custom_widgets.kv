@@ -1,0 +1,129 @@
+<CustomDateWidget@BoxLayout>:
+
+    orientation: 'vertical'
+    size_hint: 0.8, None
+    height: self.minimum_height
+    pos_hint: {'center_x': 0.5}
+    # Dünne Linie
+    canvas:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1  # Graue Farbe
+        Line:
+            rounded_rectangle: (self.x - 10, self.y - 5, self.width + 10, self.height + 20, 10)
+            width: 1
+
+    GridLayout:
+        cols: 2
+        size_hint_x: 1
+        size_hint_y: None
+        height: self.minimum_height
+
+        MDLabel:
+            text: root.title
+            font_size: '16sp'
+            theme_text_color: 'Secondary'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 20
+
+        # Checkbox für vor christlicher Zeitrechnung
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'center'
+            
+            FloatLayout:    
+                orientation: 'horizontal'
+                size_hint: 0.5, 1
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: dp(48), dp(48)
+                    size_hint_y: None
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    on_release: root.set_bc(self.active)
+
+                MDLabel:
+                    text: app.t('BC')
+                    font_size: '16sp'
+                    theme_text_color: 'Secondary'
+                    size_hint_y: None
+                    pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                    padding_y: 20
+                    
+
+    GridLayout:
+        cols: 3
+        size_hint_x: 1
+        size_hint_y: None
+        height: self.minimum_height
+
+        # Labels
+        MDLabel:
+            text: app.t('Day')
+            font_size: '14sp'
+            size_hint_min_x: 120
+            theme_text_color: 'Secondary'
+
+        MDLabel:
+            text: app.t('Month')
+            font_size: '14sp'
+            size_hint_min_x: 120
+            theme_text_color: 'Secondary'
+
+        MDLabel:   
+            text: app.t('Year')
+            font_size: '14sp'
+            size_hint_min_x: 120
+            theme_text_color: 'Secondary'
+
+        MDFlatButton:
+            id: day_button
+            text: app.t('Day')
+            theme_text_color: 'Secondary'
+            font_size: '20sp'
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            width: '120dp'
+            height: '20dp'
+            on_release: root.show_day_menu()
+
+        MDFlatButton:
+            id: month_button
+            text: app.t('Month')
+            theme_text_color: 'Secondary'
+            font_size: '20sp'
+            size_hint: 1, 1
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            width: '120dp'
+            height: '20dp'
+            on_release: root.show_month_menu()
+
+        # Jahr, nötig um Button und Textfeld übereinander zu legen
+        FloatLayout:
+            width: '120dp'
+            height: '20dp'  # Adjust this value to change the height of the frame
+
+            MDFlatButton:
+                text: app.t('Year')
+                font_size: '20sp'
+                width: '120dp'
+                height: '20dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                theme_text_color: 'Secondary'
+                opacity: 0 if year_field.focus or year_field.text else 1
+                on_release: 
+                    year_field.disabled = False  # Enable the text field when the button is clicked
+                    year_field.focus = True
+
+            MDTextField:
+                id: year_field
+                halign: 'center'
+                text_color_normal: 0, 0, 0, 1
+                input_filter: 'int'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.555}
+                font_size: '20sp'
+                line_color_focus: 1, 0, 0, 0
+                line_color_normal: 1, 0, 0, 0
+                size_hint: None, None
+                on_focus: if not self.focus: root.set_year(self)
+                disabled: True

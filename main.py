@@ -1,6 +1,7 @@
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
+from kivy.lang import Builder
 
 import showfamilytree
 import menu
@@ -27,6 +28,7 @@ class familyTreeApp(MDApp):
         self.title = 'Family Tree App'
         self.language = 'EN'
         self.languageDict = {}
+        Builder.load_file('custom_widgets.kv')
 
     def setLanguage(self, lang):
         if self.language == lang.upper():
@@ -61,11 +63,10 @@ class familyTreeApp(MDApp):
         screen_manager.current = current_screen_name
 
         print('reloaded language')
-
     def t(self, key):
         return self.languageDict.get(key, key) if self.language != 'EN' else key
 
-    def getlanguage(self):
+    def getLanguage(self):
         return self.language
 
 if __name__ == "__main__":
