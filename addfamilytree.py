@@ -6,14 +6,16 @@ from kivymd.uix.textfield import MDTextField
 from kivymd.uix.list import OneLineListItem
 from kivy.app import App
 from custom_widgets import CustomDateWidget
+
+import person
     
 class AddFamilyTreeScreen(Screen):
     gender = StringProperty('u') # StringProperty nesserary to get the button state updated
     firstname = 'firstname'
     secondnames = ['secondname1', 'secondname2']
-    lastname = 'lastname'
-    birthdate = [0, 0, -1, False] # [day, month, year, bc?]
-    deathdate = [0, 0, -1, False] # [day, month, year, bc?]
+    lastnames = 'lastname'
+    birthdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
+    deathdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
 
     def __init__(self, **kwargs):
         #self.gender = 'u'
@@ -95,7 +97,7 @@ class AddFamilyTreeScreen(Screen):
     def save(self, instance):
         self.firstname = self.ids.firstname.text #remove Space unnecessary, no space allowed in first name
         self.secondnames = self.removeSpaceAtEnd(self.ids.secondnames.text)
-        self.lastname = self.removeSpaceAtEnd(self.ids.lastname.text)
+        self.lastnames = self.removeSpaceAtEnd(self.ids.lastname.text)
 
         self.birthdate[0] = self.ids.birthdate.day
         self.birthdate[1] = self.ids.birthdate.month
@@ -110,9 +112,20 @@ class AddFamilyTreeScreen(Screen):
         print('Save button pressed')
         print(f'Firstname: {self.firstname}')
         print(f'Secondnames: {self.secondnames}')
-        print(f'Lastname: {self.lastname}')
+        print(f'Lastname: {self.lastnames}')
         print(f"Birthday: {self.birthdate[0]}.{self.birthdate[1]}.{self.birthdate[2]} {'BC' if self.birthdate[3] else 'AD'}")
         print(f"Deathday: {self.deathdate[0]}.{self.deathdate[1]}.{self.deathdate[2]} {'BC' if self.deathdate[3] else 'AD'}")
+
+        # Create a new person object
+        p = person.Person()
+        p.add_firstname(self.firstname)
+        p.add_secondnames(self.secondnames)
+        p.add_lastnames(self.lastnames)
+        p.add_birth_date(self.birthdate)
+        p.add_death_date(self.deathdate)
+
+
+        p.print_everything()
 
         
 

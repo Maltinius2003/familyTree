@@ -12,7 +12,9 @@ Personengruppen wie "Berliner"
 
 (initial Person: year texfield zu groß)
 year zahl feld zu niedrig
-wenn von textfeld direkt auf speichern, speichert es nicht
-
+wenn von year textfeld direkt auf speichern, speichert es nicht, erst beim zweiten mal
+add death? Checkbox
+timezone in settings
+MDExpansionPanel for persons list
 
 GenderButtons: https://kivymd.readthedocs.io/en/0.104.0/components/button/index.html

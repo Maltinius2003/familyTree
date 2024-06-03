@@ -28,6 +28,9 @@ class familyTreeApp(MDApp):
         self.title = 'Family Tree App'
         self.language = 'EN'
         self.languageDict = {}
+        
+        self.persons = []
+
         Builder.load_file('custom_widgets.kv')
 
     def setLanguage(self, lang):
@@ -68,6 +71,15 @@ class familyTreeApp(MDApp):
 
     def getLanguage(self):
         return self.language
+
+    def add_person(self, person):
+        self.persons.append(person)
+
+    def remove_person(self, id):
+        for person in self.persons:
+            if person.id == id:
+                self.persons.remove(person)
+        
 
 if __name__ == "__main__":
     familyTreeApp().run()

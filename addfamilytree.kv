@@ -79,7 +79,30 @@
                 #             group: 'gender'
                 #             on_release: root.setGender('u')
                 #             state: 'down' if root.gender == 'u' else 'normal'
-                
+
+                MDSegmentedControl:
+                    id: segment_control
+                    #on_active: app.on_segment_control_active(self)
+                    #size_hint_y: None
+                    size_hint_x: 0.8
+                    pos_hint: {'center_x':0.5}
+
+                    MDSegmentedControlItem:
+                        text: "Option 1"
+                        #size_hint_x: 1
+                        size_hint: None, None
+                        width: 300
+                    
+                    MDSegmentedControlItem:
+                        text: "Option 2"
+                        #size_hint_x: 1
+                        size_hint: None, None
+                        width: 300
+                    
+                    #MDSegmentedControlItem:
+                        #text: "Option 3"
+                        #size_hint_x: 1
+                                
 
                 MDTextField:
                     id: firstname
