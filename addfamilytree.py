@@ -143,6 +143,7 @@ class AddFamilyTreeScreen(Screen):
 
         # Create a new person object
         p = person.Person()
+        
         p.add_gender(self.gender)
         p.add_firstname(self.firstname)
         p.add_secondnames(self.secondnames)

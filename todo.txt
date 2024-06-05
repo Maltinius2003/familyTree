@@ -19,4 +19,10 @@ MDExpansionPanel for persons list
 überlegen was ist wenn adoptiveltern und leibliche eltern dabei
 (leibliche Eltern auch eintragen?)
 
-GenderButtons: https://kivymd.readthedocs.io/en/0.104.0/components/button/index.html
+Next steps:
+counter für personen ids, wohl auch in speicherdatei, keine alten ids freigeben, fortlaufend
+database zum speichern, vll google firebase oder amazon
+tab mit liste von personen machen die alle infos anzeigt (vll alphabetisch, vll nach ids)
+(bei beziehungen Namen anzeigen statt ids)
+
+tab um person zu editieren, mögl personid übergeben bei screenwechsel
