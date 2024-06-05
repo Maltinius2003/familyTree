@@ -2,7 +2,7 @@ Settings;Einstellungen
 Language;Sprache
 Back;Zurück
 Family Tree;Stammbaum
-Create initial person:;Erste Person erstellen
+Add Initial Family Member;Erste Person hinzufügen
 First Name;Vorname
 e.g. Hans, Hans-Peter, Hans-Peter-Paul;z.B. Hans, Hans-Peter, Hans-Peter-Paul
 Second Name(s);Zweitname(n)
@@ -13,7 +13,9 @@ M;M
 F;W
 D;D
 U;U
-Birthdate:;Geburtsdatum:
+Birthdate;Geburtsdatum
+Deathdate;Todesdatum
+BC;v.Chr.
 Day;Tag
 Month;Monat
 Year;Jahr
@@ -31,3 +33,4 @@ October;Oktober
 November;November
 December;Dezember
 Back;Zurück
+Save;Speichern

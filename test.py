@@ -30,6 +30,17 @@ class ExampleApp(MDApp):
     def build(self):
         self.root = Builder.load_string(KV)
         Window.bind(on_resize=self.on_window_resized)
+        Window.bind(on_pre_resize=self.on_pre_window_resize)
+        Window.bind(on_show=self.on_show)
+
+
+        Window.size = (400, 600)
+        #Window._set_size(400, 600)
+        #Window._set_system_size(400, 600)
+        #Window._update_childsize(self, 400)
+
+        #Window._do_resize(self)
+
         return self.root
 
     def on_window_resized(self, window, width, height):
@@ -41,8 +52,17 @@ class ExampleApp(MDApp):
         # Access the segmented control and set its width
         self.root.ids.segment_control.ids.segment_panel.width = parent_width_dp
 
+    def on_pre_window_resize(self, window, width, height):
+        self.on_window_resized(window, width, height)
+
+    def on_show(self, window):
+        print("Window shown")
+
     def get_active_button(self):
         print("Get active button pressed")
+        self.on_window_resized(self, Window.width, Window.height)
 
 if __name__ == "__main__":
+    
     ExampleApp().run()
+    #self.on_window_resized()

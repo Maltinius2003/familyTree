@@ -16,5 +16,7 @@ wenn von year textfeld direkt auf speichern, speichert es nicht, erst beim zweit
 add death? Checkbox
 timezone in settings
 MDExpansionPanel for persons list
+überlegen was ist wenn adoptiveltern und leibliche eltern dabei
+(leibliche Eltern auch eintragen?)
 
 GenderButtons: https://kivymd.readthedocs.io/en/0.104.0/components/button/index.html

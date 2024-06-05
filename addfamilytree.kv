@@ -15,7 +15,7 @@
         #adaptive_height: True
         
         MDTopAppBar:
-            title: "Add Initial Family Member"
+            title: app.t("Add Initial Family Member")
             left_action_items: [['arrow-left', lambda x: root.back_to_menu()]]
             elevation: 10
             size_hint_y: None
@@ -82,27 +82,25 @@
 
                 MDSegmentedControl:
                     id: segment_control
-                    #on_active: app.on_segment_control_active(self)
-                    #size_hint_y: None
-                    size_hint_x: 0.8
-                    pos_hint: {'center_x':0.5}
-
+                    size_hint_x: 1
+                    on_active: root.set_gender(*args)
+                
                     MDSegmentedControlItem:
-                        text: "Option 1"
-                        #size_hint_x: 1
-                        size_hint: None, None
-                        width: 300
+                        id: gender_u
+                        text: app.t("U")
                     
                     MDSegmentedControlItem:
-                        text: "Option 2"
-                        #size_hint_x: 1
-                        size_hint: None, None
-                        width: 300
+                        id: gender_m
+                        text: app.t("M")
                     
-                    #MDSegmentedControlItem:
-                        #text: "Option 3"
-                        #size_hint_x: 1
-                                
+                    MDSegmentedControlItem:
+                        id: gender_f
+                        text: app.t("F")
+                    
+                    MDSegmentedControlItem:
+                        id: gender_d
+                        text: app.t("D")
+                              
 
                 MDTextField:
                     id: firstname
@@ -151,12 +149,10 @@
                     # Birthdate
                     CustomDateWidget:
                         id: birthdate
-                        custom_id: 'birthdate'
                         title: app.t('Birthdate')
 
                     CustomDateWidget:
                         id: deathdate
-                        custom_id: 'deathdate'
                         title: app.t('Deathdate')
 
                     MDFlatButton:

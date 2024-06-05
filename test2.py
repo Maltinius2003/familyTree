@@ -1,46 +1,66 @@
 from kivy.lang import Builder
-from kivy.core.window import Window
-from kivymd.app import MDApp
 
-# Set window size
-Window.size = (400, 600)
+from kivymd.uix.label import MDLabel
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.segmentedbutton import (
+    MDSegmentedButton,
+    MDSegmentedButtonItem,
+    MDSegmentButtonLabel,
+)
+from kivymd.app import MDApp
 
 KV = '''
 MDScreen:
-    MDFloatLayout:
-        MDLabel:
-            text: "Segment Control Example"
-            halign: "center"
-            pos_hint: {"center_x": .5, "center_y": .8}
-        
-        MDSegmentedControl:
-            pos_hint: {"center_x": .5, "center_y": .5}
-            size_hint: 0.8, None  # Adjusting the width to 80% of the parent and height to None
-            #height: 48  # Specifying the height in dp (density-independent pixels)
-            #segment_panel_height: "100dp"
+    md_bg_color: self.theme_cls.backgroundColor
 
-            MDSegmentedControlItem:
-                text: "1"
-                width: dp(50)
-            MDSegmentedControlItem:
-                text: "2"
-                width: dp(50)
-            MDSegmentedControlItem:
-                text: "3"
-                width: dp(50)
-            MDSegmentedControlItem:
-                text: "4"
-                width: dp(50)
-            
-
+    MDBoxLayout:
+        id: box
+        orientation: "vertical"
+        size_hint_x: .7
+        adaptive_height: True
+        spacing: "24dp"
+        pos_hint: {"center_x": .5, "center_y": .5}
 '''
 
-class MainApp(MDApp):
+
+class Example(MDApp):
+    def on_start(self):
+        for segment_type in ["large", "normal", "medium", "small"]:
+            self.root.ids.box.add_widget(
+                MDBoxLayout(
+                    MDLabel(
+                        text=f"Type '{segment_type}'",
+                        adaptive_height=True,
+                        bold=True,
+                        pos_hint={"center_y": 0.5},
+                        halign="center",
+                    ),
+                    MDSegmentedButton(
+                        MDSegmentedButtonItem(
+                            MDSegmentButtonLabel(
+                                text="Songs",
+                            ),
+                        ),
+                        MDSegmentedButtonItem(
+                            MDSegmentButtonLabel(
+                                text="Albums",
+                            ),
+                        ),
+                        MDSegmentedButtonItem(
+                            MDSegmentButtonLabel(
+                                text="Podcasts",
+                            ),
+                        ),
+                        type=segment_type,
+                    ),
+                    orientation="vertical",
+                    spacing="12dp",
+                    adaptive_height=True,
+                )
+            )
+
     def build(self):
         return Builder.load_string(KV)
-    
-    def on_segment(self, instance_segment):
-        print(f"Segment {instance_segment.text} selected")
 
-if __name__ == '__main__':
-    MainApp().run()
+
+Example().run()

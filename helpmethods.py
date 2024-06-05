@@ -2,7 +2,7 @@ import custom_datatypes as cdt
 from datetime import datetime
 
 def remove_dash_return_list(text):
-    return text.replace('-', ' ').split()
+    return text.split("-")
 
 def string_list_to_name(list):
     name = cdt.Name()
@@ -13,5 +13,5 @@ def string_list_to_name(list):
     return name
 
 def remove_space_return_list(text):
-    return text.replace(' ', '').split()
+    return text.split()
     

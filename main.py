@@ -2,6 +2,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.core.window import Window
 from kivy.lang import Builder
+from kivy.metrics import dp
 
 import showfamilytree
 import menu
@@ -32,6 +33,11 @@ class familyTreeApp(MDApp):
         self.persons = []
 
         Builder.load_file('custom_widgets.kv')
+
+        #parent_width = self.root.width
+        #parent_width_dp = dp(parent_width/2)
+        #print(f"Parent layout width: {parent_width} pixels, {parent_width_dp} dp")
+        #self.ids.segment_control.ids.segment_panel.width = parent_width_dp
 
     def setLanguage(self, lang):
         if self.language == lang.upper():
@@ -66,6 +72,7 @@ class familyTreeApp(MDApp):
         screen_manager.current = current_screen_name
 
         print('reloaded language')
+
     def t(self, key):
         return self.languageDict.get(key, key) if self.language != 'EN' else key
 

@@ -14,7 +14,7 @@ class Person:
 
         self.relations = [] # list of relation ids
 
-        self.genders = []  # m/w/d
+        self.genders = []  # u/m/w/d
         self.birth_date = None
         self.death_date = None # None, [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
         # death_date to True when date is unknown
@@ -34,13 +34,13 @@ class Person:
 
     def print_everything(self):
         print(f'ID: {self.id}')
-        print(f'Firstnames: {self.first_names}')
-        print(f'Secondnames: {self.second_names}')
-        print(f'Familynames: {self.last_names}')
-        print(f'Pen names: {self.pen_names}')
+        print(f'Firstnames: {self.string_first_names()}')
+        print(f'Secondnames: {self.string_second_names()}')
+        print(f'Familynames: {self.string_last_names()}')
+        print(f'Pen names: {self.string_pen_names()}')
         print(f'Academic degrees: {self.academic_degrees}')
         print(f'Relations: {self.relations}')
-        print(f'Gender: {self.genders}')
+        print(f'Gender: {self.string_genders()}')
         print(f'Birthdate: {self.birth_date}')
         print(f'Deathdate: {self.death_date}')
         print(f'Birthplace: {self.birth_place}')
@@ -94,17 +94,9 @@ class Person:
     def add_relation(self, relation):
         pass
 
-    def add_gender(self, letter):
-        char_gen = letter.lower()
+    def add_gender(self, gender_num):
         gender = cdt.Gender()
-        if char_gen == 'u':
-            gender.gen = 0
-        elif char_gen == 'm':
-            gender.gen = 1
-        elif char_gen == 'f':
-            gender.gen = 2
-        elif char_gen == 'd':
-            gender.gen = 3
+        gender.gen = gender_num
         self.genders.append(gender)
 
     def add_birth_date(self, date_list):
@@ -119,6 +111,47 @@ class Person:
 
     def add_death_place(self, place):
         self.death_place = place
+
+    # return string function
+    def string_first_names(self):
+        out = ''
+        for name in self.first_names:
+            for part in name.name_components:
+                out += part.component
+                if part != name.name_components[-1]:
+                    out += '-'
+            if name != self.first_names[-1]:
+                out += ', '
+        return out
+    
+    def string_second_names(self):
+        out = ''
+        for name in self.second_names:
+            for part in name.name_components:
+                out += part.component
+                if part != name.name_components[-1]:
+                    out += '-'
+            if name != self.second_names[-1]:
+                out += ' '
+        return out
+    
+    def string_last_names(self):
+        out = ''
+        for name in self.second_names:
+            for part in name.name_components:
+                out += part.component
+                if part != name.name_components[-1]:
+                    out += '-'
+            if name != self.second_names[-1]:
+                out += ' '
+        return out
+    
+    def string_pen_names(self):
+        return ', '.join(self.pen_names)
+    
+    def string_genders(self):
+        return ', '.join([str(gender.gen) for gender in self.genders])
+        
 
     
 

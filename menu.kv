@@ -17,7 +17,9 @@
         text: 'Add Family Tree'
         icon: 'plus'
         pos_hint: {'center_x':0.5,'center_y':0.45}
-        on_press: root.manager.current = 'addfamilytree'
+        on_press:
+            root.manager.current = 'addfamilytree'
+            root.manager.get_screen('addfamilytree').on_access() #to resize the segemented control buttons (gender)
     MDFloatingActionButton:
         text: 'Settings'
         icon: 'cogs'
