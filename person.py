@@ -18,6 +18,7 @@ class Person:
         self.birth_date = None
         self.death_date = None # None, [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
         # death_date to True when date is unknown
+        self.deathdate_unknown = False
         self.birth_place = None
         self.death_place = None
 
@@ -43,6 +44,7 @@ class Person:
         print(f'Gender: {self.string_genders()}')
         print(f'Birthdate: {self.birth_date}')
         print(f'Deathdate: {self.death_date}')
+        print(f'Deathdate unknown: {self.deathdate_unknown}')
         print(f'Birthplace: {self.birth_place}')
         print(f'Deathplace: {self.death_place}')
         print(f'Religions: {self.religions}')
@@ -104,7 +106,9 @@ class Person:
     
     def add_death_date(self, date_list):
         self.death_date = date_list
-        # death_date to True when date is unknown
+    
+    def add_deathdate_unknown(self, boolean):
+        self.deathdate_unknown = boolean
 
     def add_birth_place(self, place):
         self.birth_place = place

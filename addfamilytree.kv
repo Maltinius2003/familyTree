@@ -26,60 +26,9 @@
                 id: test
                 orientation: 'vertical'
                 size_hint_y: None
+                #size_hint_x: 0.8
                 height: self.minimum_height
-                #spacing: dp(10)
-
-                #canvas.before:
-                #    Color:
-                #        rgba: 0, 1, 0, 1  # Green color
-                #    Rectangle:
-                #        pos: self.pos
-                #        size: self.size
-
-                # FloatLayout:
-                #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                #     size_hint: 0.8, 0.05
-                    
-                #     #farbig
-                #     canvas.before:
-                #         Color:
-                #             rgba: 0.5, 0.5, 0.5, 1  # Gray color
-                #         RoundedRectangle:
-                #             pos: self.pos
-                #             size: self.size
-                #             radius: [10, 10, 10, 10]
-                #         Line:
-                #             rounded_rectangle: (self.x, self.y, self.width, self.height, 10)
-                #             width: 1
-                    
-                #     GridLayout:
-                #         cols: 4
-                #         pos_hint: {'x': 0.3, 'center_y': 0.5}
-                        
-                #         GenderButton:
-                #             text: app.t('M')
-                #             group: 'gender'
-                #             on_release: root.setGender('m')
-                #             state: 'down' if root.gender == 'm' else 'normal'
-
-                #         GenderButton:
-                #             text: app.t('F')
-                #             group: 'gender'
-                #             on_release: root.setGender('f')
-                #             state: 'down' if root.gender == 'f' else 'normal'
-
-                #         GenderButton:
-                #             text: app.t('D')
-                #             group: 'gender'
-                #             on_release: root.setGender('d')
-                #             state: 'down' if root.gender == 'd' else 'normal'
-
-                #         GenderButton:
-                #             text: app.t('U')
-                #             group: 'gender'
-                #             on_release: root.setGender('u')
-                #             state: 'down' if root.gender == 'u' else 'normal'
-
+                
                 MDSegmentedControl:
                     id: segment_control
                     size_hint_x: 1
@@ -146,7 +95,7 @@
                     orientation: 'vertical'
                     size_hint_y: None
                     height: self.minimum_height
-                    # Birthdate
+
                     CustomDateWidget:
                         id: birthdate
                         title: app.t('Birthdate')
@@ -155,10 +104,33 @@
                         id: deathdate
                         title: app.t('Deathdate')
 
-                    MDFlatButton:
-                        text: app.t('Save')
-                        pos_hint: {'center_x':0.5}
-                        on_press: root.save(self)
+                    AnchorLayout:
+                        anchor_x: 'left'
+                        anchor_y: 'center'
+                        
+                        FloatLayout:    
+                            orientation: 'horizontal'
+                            size_hint: 0.5, 1
+
+                            MDCheckbox:
+                                size_hint: None, None
+                                size: dp(48), dp(48)
+                                size_hint_y: None
+                                pos_hint: {'center_x': 0.2, 'center_y': 0.5}
+                                on_release: root.set_deathdate_unknown(self.active)
+
+                            MDLabel:
+                                text: app.t('Deathdate unknown')
+                                font_size: '16sp'
+                                theme_text_color: 'Secondary'
+                                size_hint_y: None
+                                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                                padding_y: 20
+
+                MDFlatButton:
+                    text: app.t('Save')
+                    pos_hint: {'center_x':0.5}
+                    on_press: root.save(self)
                 
                                 
                 #MDRectangleFlatButton:

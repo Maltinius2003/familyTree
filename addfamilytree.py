@@ -12,24 +12,24 @@ from kivy.core.window import Window
 import person
     
 class AddFamilyTreeScreen(Screen):
-    gender = 0 # 0 = unknown
-    firstname = 'firstname'
-    secondnames = ['secondname1', 'secondname2']
-    lastnames = 'lastname'
-    birthdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
-    deathdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
-
+    
     def __init__(self, **kwargs):
-        #self.gender = 'u'
         super().__init__(**kwargs)
         Window.bind(on_resize=self.on_window_resized)
-        #Window.bind(on_pre_resize=self.on_pre_window_resize)
+        
+        self.gender = 0 # 0 = unknown
+        self.firstname = 'firstname'
+        self.secondnames = ['secondname1', 'secondname2']
+        self.lastnames = 'lastname'
+        self.birthdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
+        self.deathdate = [None, None, None, None, None, None, None, None, None] # [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
+        self.deathdate_unknown = False
         
     def on_window_resized(self, window, width, height):
         # Get the size of the parent layout
         parent_width = width
         parent_width_dp = dp(parent_width/2)
-        print(f"Parent layout width: {parent_width} pixels, {parent_width_dp} dp")
+        #print(f"Parent layout width: {parent_width} pixels, {parent_width_dp} dp")
 
         # Access the segmented control and set its width
         self.ids.segment_control.ids.segment_panel.width = parent_width_dp
@@ -39,6 +39,20 @@ class AddFamilyTreeScreen(Screen):
 
     def screen_method(self):
         print('Hello from addfamilytree')
+
+    def test(self):
+        print('test')
+
+    def set_gender(self, segment_control, segment_item):
+        if segment_item == self.ids.gender_u:
+            self.gender = 0
+        elif segment_item == self.ids.gender_m:
+            self.gender = 1
+        elif segment_item == self.ids.gender_f:
+            self.gender = 2
+        elif segment_item == self.ids.gender_d:
+            self.gender = 3 
+        #print(self.gender)
 
     def checkFirstName(self, instance):
         # Only allow alphanumeric characters and dashes, no dash-dash
@@ -100,26 +114,48 @@ class AddFamilyTreeScreen(Screen):
             return text[:-1]
         return text
 
-    def set_gender(self, segment_control, segment_item):
-        if segment_item == self.ids.gender_u:
-            self.gender = 0
-        elif segment_item == self.ids.gender_m:
-            self.gender = 1
-        elif segment_item == self.ids.gender_f:
-            self.gender = 2
-        elif segment_item == self.ids.gender_d:
-            self.gender = 3 
-        #self.gender = gender_num
-        #print(self.gender)
+    def check_dates(self):
+        # AD = False, BC = True
 
-    def test(self):
-        print('test')
+        # Check if the birthyear is greater than the deathyear
+        if self.birthdate[2] is not None and self.deathdate[2] is not None:
+            # Check if the birthyear is greater than the deathyear, anno domini
+            if self.birthdate[2] > self.deathdate[2] and not self.birthdate[3] and not self.deathdate[3]:
+                return False
+            # Check if the birthyear is greater than the deathyear, before christ
+            if self.birthdate[2] < self.deathdate[2] and self.birthdate[3] and self.deathdate[3]:
+                return False
+            # Check if the birthmonth is greater than the deathmonth, if the birthyear is the same as the deathyear
+            if self.birthdate[1] is not None and self.deathdate[1] is not None and self.birthdate[2] == self.deathdate[2]:
+                if self.birthdate[1] > self.deathdate[1]:
+                    return False
+                # Check if the birthday is greater than the deathday, if the birthyear and birthmonth are the same as the deathyear and deathmonth
+                if self.birthdate[0] is not None and self.deathdate[0] is not None and self.birthdate[1] == self.deathdate[1]:
+                    if self.birthdate[0] > self.deathdate[0]:
+                        return False
+        # birthdate ad and deathdate bc
+            if not self.birthdate[3] and self.deathdate[3]:
+                return False
+        # birthdate bc and deathdate ad, always true  
+        
+        return True
+    
+    def set_deathdate_unknown(self, active):
+        
+        if active:
+            self.ids.deathdate.set_day(0)
+            self.ids.deathdate.month = None
+            self.ids.deathdate.year = None
+            self.ids.deathdate.bc = False
+
+            self.deathdate_unknown = True
+        else:
+            self.deathdate_unknown = False
 
     def back_to_menu(self):
         self.manager.current = 'menu'
         
     def save(self, instance):
-
         self.firstname = self.ids.firstname.text #remove Space unnecessary, no space allowed in first name
         self.secondnames = self.removeSpaceAtEnd(self.ids.secondnames.text)
         self.lastnames = self.removeSpaceAtEnd(self.ids.lastname.text)
@@ -141,19 +177,24 @@ class AddFamilyTreeScreen(Screen):
         #print(f"Birthday: {self.birthdate[0]}.{self.birthdate[1]}.{self.birthdate[2]} {'BC' if self.birthdate[3] else 'AD'}")
         #print(f"Deathday: {self.deathdate[0]}.{self.deathdate[1]}.{self.deathdate[2]} {'BC' if self.deathdate[3] else 'AD'}")
 
-        # Create a new person object
-        p = person.Person()
-        
-        p.add_gender(self.gender)
-        p.add_firstname(self.firstname)
-        p.add_secondnames(self.secondnames)
-        p.add_lastnames(self.lastnames)
-        p.add_birth_date(self.birthdate)
-        p.add_death_date(self.deathdate)
-        
+        if self.check_dates():
+            # Create a new person object
+            p = person.Person()
+            
+            p.add_gender(self.gender)
+            p.add_firstname(self.firstname)
+            p.add_secondnames(self.secondnames)
+            p.add_lastnames(self.lastnames)
+            p.add_birth_date(self.birthdate)
+            p.add_death_date(self.deathdate)
+            p.add_deathdate_unknown(self.deathdate_unknown)
+            
 
 
-        p.print_everything()
+            p.print_everything()
+        
+        else:
+            print('Error: Birthdate is greater than deathdate')
 
         
 

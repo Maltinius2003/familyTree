@@ -8,16 +8,26 @@ class CustomLabels(BoxLayout):
     pass
 
 class CustomDateWidget(BoxLayout):
+
     title = StringProperty("test_title")
-    day = 0
+    
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        self.day = None
+        self.month = None
+        self.year = None
+        self.bc = False
+    
+    '''
+    title = StringProperty("test_title")
+    day = None
     month = 0
     year = -1
-    bc = False
+    bc = False'''
 
     first_use_day = True # error when set_day() is used before menu is opened 
-    
-    #parent_screen = ObjectProperty(None)
-    
+
     def show_day_menu(self):
         days = [App.get_running_app().t('Unknown')] + [str(day) for day in range(1, 32)]
         menu_items = [
@@ -41,12 +51,13 @@ class CustomDateWidget(BoxLayout):
         if day == 0:
             self.ids.day_button.text = App.get_running_app().t('Day')
             self.ids.day_button.theme_text_color = 'Secondary'
+            self.day = None
         else:
             day = self.check_day(day)
             self.ids.day_button.text = str(day)
             self.ids.day_button.theme_text_color = 'Primary'
-        #print(f'Selected day: {day}') #only pass if the day is not unknown
-        self.day = day
+            self.day = day
+             
         if not self.first_use_day:
             self.day_menu.dismiss()
 
@@ -78,31 +89,34 @@ class CustomDateWidget(BoxLayout):
             self.ids.month_button.text = month_name
             self.ids.month_button.theme_text_color = 'Primary'
         #print(f'Selected month: {month_name}({month})') #pass everytime, to set the month, could be changed back to unknown
-        self.month = month
-        self.set_day(self.day)
+        if month is 0:
+            self.month = None
+        else:
+            self.month = month
+        if self.day is not None: self.set_day(self.day) #check if the day is still valid
         self.month_menu.dismiss()
 
     def check_day(self, day):
-        # restrctions only after year 8ad, first sure leap year after Augustus reformed the calendar
-        if self.month == 2 and day > 28: #february problem
-            if not self.bc and self.year > 1582: # > since 1582ad gregorian calendar
-                if self.year % 4 == 0 and (self.year % 100 != 0 or self.year % 400 == 0):
-                    return 29 #gregorian leap year
+        # restrctions only after year 8ad, first sure leap year after Augustus corrects the calendar
+        if not self.bc and self.year is not None and self.year >= 8:
+            if self.month == 2 and day > 28: #february problem
+                if self.year > 1582: # > since 1582ad gregorian calendar
+                    if self.year % 4 == 0 and (self.year % 100 != 0 or self.year % 400 == 0):
+                        return 29 #gregorian leap year
+                    else:
+                        return 28 #gregorian common year
+                elif self.year <= 1582: # 8ad - 1582ad, safe julian calendar, 8 ad is the first common leap year, before that there were mistakes
+                    if self.year % 4 == 0:
+                        return 29 #julian leap year 
+                    else:
+                        return 28 #julian common year
                 else:
-                    return 28 #gregorian common year
-            elif not self.bc and self.year >= 8 and self.year <= 1582: # 8ad - 1582ad, safe julian calendar, 8 ad is the first common leap year, before that there were mistakes
-                if self.year % 4 == 0:
-                    return 29 #julian leap year 
-                else:
-                    return 28 #julian common year
-            else:
-                return day # facts before 8ad are not clear, allow every day
-        elif self.month in [4, 6, 9, 11] and day > 30 and not self.bc and self.year > 8:
-            return 30
-        elif self.year == 1582 and self.month == 10 and day > 4 and day < 15 and not self.bc: # 5th - 14th October 1582 does not exist
-            return 4
-        else:
-            return day
+                    return day # facts before 8ad are not clear, allow every day
+            elif self.month in [4, 6, 9, 11] and day > 30:
+                return 30
+            elif self.year == 1582 and self.month == 10 and day > 4 and day < 15: # 5th - 14th October 1582 does not exist
+                return 4
+        return day
         
     def set_year(self, instance):
         new_year = instance.text
@@ -111,10 +125,9 @@ class CustomDateWidget(BoxLayout):
                 new_year = '1' #year 0 does not exist in the historic context 
                 instance.text = new_year
             self.year = int(new_year)
-            self.set_day(self.day) #check if the day is still valid
+            if self.day is not None: self.set_day(self.day) #check if the day is still valid
         else:
-            new_year = '-1'
-            self.year = int(new_year)
+            self.year = None
 
     def set_bc(self, bc):
         self.bc = bc
