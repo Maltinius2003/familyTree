@@ -1,11 +1,11 @@
 Länderliste als txt für Heirat, als enum laden, bei Liste verschiebt sich mögl. index
 kofessionen juden
 
-Als Namensänderungsgrund Änderung der Namesrechts von 2024
-Namen mit Leerzeichen und Bindestrichen
+*Als Namensänderungsgrund Änderung der Namesrechts von 2024
+*Namen mit Leerzeichen und Bindestrichen
 
-dont allow safe when input red
-GenderButtons gehen bei größenveränderung nicht mit
+*dont allow safe when input red
+*GenderButtons gehen bei größenveränderung nicht mit
 umlaute werden aus sprachdatei nicht richtig eingelesen
 *v.Chr und n.Chr zu Geburtsdatum
 Personengruppen wie "Berliner"
@@ -18,11 +18,20 @@ timezone in settings
 MDExpansionPanel for persons list
 überlegen was ist wenn adoptiveltern und leibliche eltern dabei
 (leibliche Eltern auch eintragen?)
+statt personenliste speichern, tupel/liste mit personen und beziehungen speichern
 
 Next steps:
 counter für personen ids, wohl auch in speicherdatei, keine alten ids freigeben, fortlaufend
 database zum speichern, vll google firebase oder amazon
 tab mit liste von personen machen die alle infos anzeigt (vll alphabetisch, vll nach ids)
 (bei beziehungen Namen anzeigen statt ids)
+fix death unknown check, remove deathdate data
 
-tab um person zu editieren, mögl personid übergeben bei screenwechsel
+tab um person zu anzuzeigen/editieren, mögl personid übergeben bei screenwechsel
+popup bei start, dann ausgewählte datei anzeigen
+*vll nicht nur tuple sondern list auch mit namen des stammbaums
+
+Zu entfernen:
+Speichern momentan bei tree anzeigen
+load bei settings
+doppel save klicken mit bool verhindern, danach auf liste/shofamilytree umleiten

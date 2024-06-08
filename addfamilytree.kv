@@ -62,7 +62,6 @@
                     on_text: root.checkFirstName(self)
                     on_focus: 
                         if not self.focus: root.checkDashAtEnd(self)
-                        #if not self.focus: root.set_firstname(self.text)
 
                 MDTextField:
                     id: secondnames
@@ -75,7 +74,6 @@
                     on_text: root.checkSecondNames(self)
                     on_focus:
                         if not self.focus: root.checkDashAtEnd(self) 
-                        #if not self.focus: root.set_secondnames(self.text) 
 
                 MDTextField:
                     id: lastname
@@ -88,7 +86,6 @@
                     on_text: root.checkLastName(self)
                     on_focus: 
                         if not self.focus: root.checkDashAtEnd(self)
-                        #if not self.focus: root.set_lastname(self.text)
 
                 MDBoxLayout:
                     spacing: dp(20)
@@ -110,13 +107,13 @@
                         
                         FloatLayout:    
                             orientation: 'horizontal'
-                            size_hint: 0.5, 1
+                            size_hint: 1, 1
 
                             MDCheckbox:
                                 size_hint: None, None
                                 size: dp(48), dp(48)
                                 size_hint_y: None
-                                pos_hint: {'center_x': 0.2, 'center_y': 0.5}
+                                pos_hint: {'center_x': 0.11, 'center_y': 0.5}
                                 on_release: root.set_deathdate_unknown(self.active)
 
                             MDLabel:
@@ -124,7 +121,7 @@
                                 font_size: '16sp'
                                 theme_text_color: 'Secondary'
                                 size_hint_y: None
-                                pos_hint: {'center_y': 0.5, 'center_x': 0.5}
+                                pos_hint: {'center_y': 0.5, 'center_x': 0.65}
                                 padding_y: 20
 
                 MDFlatButton:

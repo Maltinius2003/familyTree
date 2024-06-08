@@ -12,7 +12,10 @@
         text: 'Show Family Tree'
         icon: 'tree'
         pos_hint: {'center_x':0.5,'center_y':0.7}
-        on_press: root.manager.current = 'showfamilytree'
+        on_press:
+            root.manager.current = 'showfamilytree'
+            app.print_persons()
+            app.save()
     MDFloatingActionButton:
         text: 'Add Family Tree'
         icon: 'plus'
@@ -24,4 +27,6 @@
         text: 'Settings'
         icon: 'cogs'
         pos_hint: {'center_x':0.5,'center_y':0.2}
-        on_press: root.manager.current = 'settings'
+        on_press:
+            root.manager.current = 'settings'
+            app.load_persons()

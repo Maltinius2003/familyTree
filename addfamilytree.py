@@ -192,6 +192,9 @@ class AddFamilyTreeScreen(Screen):
 
 
             p.print_everything()
+
+            # Add the person to the family tree
+            App.get_running_app().add_person(p)
         
         else:
             print('Error: Birthdate is greater than deathdate')

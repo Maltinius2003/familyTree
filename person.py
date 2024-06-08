@@ -1,3 +1,5 @@
+import json
+
 import helpmethods as hm
 import custom_datatypes as cdt
 
@@ -7,31 +9,33 @@ class Person:
         self.id = None
         self.first_names = [] # name list
         self.second_names = []
-        self.last_names = []  # z.B. Geburtsname, Wiederheirat
+        self.last_names = []  # e.g. maiden name, remarriage
         self.pen_names = [] # string list
 
+        self.nationalities = [] # string list
         self.academic_degrees = []
-
-        self.relations = [] # list of relation ids
-
-        self.genders = []  # u/m/w/d
+        
         self.birth_date = None
         self.death_date = None # None, [day, month, year, bc?, hour, minute, second, microsecond, time_zone]
         # death_date to True when date is unknown
         self.deathdate_unknown = False
         self.birth_place = None
         self.death_place = None
+        self.genders = []  # u/m/w/d
 
         self.religions = [] 
 
+        self.relations = [] # list of relation ids
         self.mother = None
         self.father = None
-        self.adopted_father = False  # Wenn von Vater adoptiert
+        self.adopted_father = False  # if adopted
         self.adopted_mother = False
 
-        self.godparents1 = []  # z.B. Pate Taufe //Wenn nicht in Stammbaum neue Person erstellen (möglichst mit niemandem Verwandt)
-        self.godparents2 = []  # z.B. Pate Firmung/Konfirmation
-        self.godchilds = [] # id der Relation
+        self.godparents = []  # relation has id
+        self.godchilds = [] # relation has id
+
+    def toJson(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
 
     def print_everything(self):
         print(f'ID: {self.id}')
@@ -52,8 +56,7 @@ class Person:
         print(f'Father: {self.father}')
         print(f'Adopted father: {self.adopted_father}')
         print(f'Adopted mother: {self.adopted_mother}')
-        print(f'Godparents1: {self.godparents1}')
-        print(f'Godparents2: {self.godparents2}')
+        print(f'Godparents1: {self.godparents}')
         print(f'Godchilds: {self.godchilds}')
 
     def add_firstname(self, text):

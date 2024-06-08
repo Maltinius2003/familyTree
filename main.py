@@ -4,6 +4,11 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.metrics import dp
 
+import os
+import jsonpickle
+import json
+from json import JSONEncoder
+
 import showfamilytree
 import menu
 import addfamilytree
@@ -30,7 +35,10 @@ class familyTreeApp(MDApp):
         self.language = 'EN'
         self.languageDict = {}
         
+        self.familyTreeName = 'My Family Tree'
         self.persons = []
+        self.relations = []
+        
 
         Builder.load_file('custom_widgets.kv')
 
@@ -82,11 +90,30 @@ class familyTreeApp(MDApp):
     def add_person(self, person):
         self.persons.append(person)
 
+    def set_tree_name(self, name):
+        self.familyTreeName = name
+
     def remove_person(self, id):
         for person in self.persons:
             if person.id == id:
                 self.persons.remove(person)
+
+    def print_persons(self):
+        for person in self.persons:
+            print(person)
+
+    def save(self):
+        treeJSON = jsonpickle.encode((self.familyTreeName, self.persons, self.relations), unpicklable=True)
+        with open('persons.json', 'w') as fp:
+            fp.write(treeJSON)
         
+    def load_persons(self):
+        if os.path.isfile('persons.json'):
+            with open('persons.json', 'r') as fp:
+                treeJSON = fp.read()
+                (self.familyTreeName, self.persons, self.relations) = jsonpickle.decode(treeJSON)
+        else:
+            print("File 'persons.json' does not exist.")
 
 if __name__ == "__main__":
     familyTreeApp().run()
