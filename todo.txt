@@ -31,6 +31,9 @@ tab um person zu anzuzeigen/editieren, mögl personid übergeben bei screenwechs
 popup bei start, dann ausgewählte datei anzeigen
 *vll nicht nur tuple sondern list auch mit namen des stammbaums
 
+In Ferner Zukunft:
+- Familienwappen ~ Icon in Auswahlliste
+
 Zu entfernen:
 Speichern momentan bei tree anzeigen
 load bei settings

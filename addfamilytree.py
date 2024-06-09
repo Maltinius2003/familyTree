@@ -34,8 +34,11 @@ class AddFamilyTreeScreen(Screen):
         # Access the segmented control and set its width
         self.ids.segment_control.ids.segment_panel.width = parent_width_dp
 
-    def on_access(self): # called when screen is accessed
+    def on_access(self): # called when screen is accessed, self defined called wenn buttons is pressed
         self.on_window_resized(Window, Window.width, Window.height)
+
+    def on_opacity(self, instance, value):
+        print("testsdfsdfsdf")
 
     def screen_method(self):
         print('Hello from addfamilytree')

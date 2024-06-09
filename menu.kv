@@ -2,12 +2,20 @@
 
 <MenuScreen>:
     name: 'menu'
+
     MDLabel:
         text: app.t('Family Tree')
         halign: 'center'
         font_style: 'H2'
         theme_text_color: 'Primary'
         pos_hint: {'center_x':0.5, 'center_y':0.9}
+
+    MDScrollView:
+        size_hint: 1, 0.5
+
+        MDList:
+            id: container
+
     MDFloatingActionButton:
         text: 'Show Family Tree'
         icon: 'tree'

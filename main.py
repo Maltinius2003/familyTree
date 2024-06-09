@@ -42,11 +42,9 @@ class familyTreeApp(MDApp):
 
         Builder.load_file('custom_widgets.kv')
 
-        #parent_width = self.root.width
-        #parent_width_dp = dp(parent_width/2)
-        #print(f"Parent layout width: {parent_width} pixels, {parent_width_dp} dp")
-        #self.ids.segment_control.ids.segment_panel.width = parent_width_dp
-
+    def on_start(self):
+        print('App started')
+    
     def setLanguage(self, lang):
         if self.language == lang.upper():
             return
