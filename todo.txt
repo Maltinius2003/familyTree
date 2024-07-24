@@ -27,6 +27,8 @@ tab mit liste von personen machen die alle infos anzeigt (vll alphabetisch, vll 
 (bei beziehungen Namen anzeigen statt ids)
 fix death unknown check, remove deathdate data
 
+bei Namensherkunft Namestag eintragen
+
 tab um person zu anzuzeigen/editieren, mögl personid übergeben bei screenwechsel
 popup bei start, dann ausgewählte datei anzeigen
 *vll nicht nur tuple sondern list auch mit namen des stammbaums
